@@ -1,102 +1,445 @@
 
-ディープラーニング
+public class DeepLearning {
+	public static void main(String[] args) {
 
-ディープラーニングはニューラルネットワークを応用したもの。
-ニューラルネットワークは人間の脳をまねた機械学習アルゴリズム。
-ディープラーニングとは、「機械自らが与えられたデータの中から、特徴量を見つけ出し、学習する」事。
+/**
+ * 
+ * $B#1!%Bh0l>O!!%K%e!<%i%k%M%C%H%o!<%/(B
+ * 	 $B#1!%C1AX%K%e!<%i%k%M%C%H%o!<%/(B
+ * 			1. $B%Q!<%;%W%H%m%s!J%9%F%C%W4X?t!K(B
+ * 			2. $B%m%8%9%F%#%C%/2s5"!J%7%0%b%$%I4X?t!K(B
+ * 			3. $BB?%/%i%9%m%8%9%F%#%C%/2s5"!J%=%U%H%^%C%/%94X?t!K(B
+ * 
+ *	 $B#2!%B?AX%K%e!<%i%k%M%C%H%o!<%/(B
+ *			4. $BB?AX%Q!<%;%W%H%m%s!JB?AX%K%e!<%i%k%M%C%H%o!<%/!K(B 
+ *			   $BF~=PNOAX(B($B%m%8%9%F%#%C%/2s5"%b%G%k(B)/$B1#$lAX(B
+ *
+ *
+ * $B#2!%BhFs>O!!%G%#!<%W%i!<%K%s%0(B
+ *   $B#1!%%G%#!<%W%S%j!<%U%M%C%H(B
+ *     	 	$B%W%l%H%l!<%K%s%0(B ($B@)Ls$D$-%\%k%D%^%s%^%7%s!K(B
+ *   	 	$B%U%!%$%s%A%e!<%K%s%0(B ($B%m%8%9%F%#%C%/2s5"%b%G%k!K(B
+ *   
+ *   $B#2!%%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@(B
+ *   	 	$B%W%l%H%l!<%K%s%0!J%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@!K(B
+ *   	 	$B%U%!%$%s%A%e!<%K%s%0(B($B%m%8%9%F%#%C%/2s5"%b%G%k!K(B
+ *   
+ *   $B#3!%@QAX%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@(B
+ *   	 	$B%W%l%H%l!<%K%s%0!J@QAX%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@!K(B
+ *   	 	$B%U%!%$%s%A%e!<%K%s%0(B($B%m%8%9%F%#%C%/2s5"%b%G%k!K(B
+ *   
+ *   $B#4!%%I%m%C%W%"%&%H(B (ReLU $B%=%U%H%W%i%94X?t(B)
+ *   
+ *   $B#5!%>v$_9~$_%K%e!<%i%k%M%C%H%o!<%/!J9b<!85%K%e!<%i%k%M%C%H%o!<%/!K(B
+ */
+/**
+  * ****************************************************
+  * Java$B$G3X$V%K%e!<%i%k%M%C%H%o!<%/$H%G%#!<%W%i!<%K%s%0(B
+  * $B0lHL<RCDK!?M(B $B6&F1DL?.<R!!(Bsuzuki.iichiro@kyodonews.jp
+  * 
+  * $B#1!%%K%e!<%i%k%M%C%H%o!<%/(B $B"+(B
+  * $B#2!%%G%#!<%W%K%e!<%i%k%M%C%H%o!<%/(B
+  * 
+  * ****************************************************
+  * 
+  * $B%G%#!<%W%i!<%K%s%0$O%K%e!<%i%k%M%C%H%o!<%/$r1~MQ$7$?$b$N!#(B
+  * $B%K%e!<%i%k%M%C%H%o!<%/$O?M4V$NG>$r$^$M$?5!3#3X=,%"%k%4%j%:%`!#(B
+  * $B%G%#!<%W%i!<%K%s%0$H$O!"!V5!3#<+$i$,M?$($i$l$?%G!<%?$NCf$+$i!"FCD'NL$r8+$D(B
+  * $B$1=P$7!"3X=,$9$k!W;v!#(B
+  * 
+  * $B#1#9#5#0G/Be8eH>Bh0l<!?M9)CNG=%V!<%`(B
+  * $B?M4V$,Dj5A$7$?7h$a$i$l$?%k!<%k$K4p$E$$$?C5:w%W%m%0%i%`(B
+  *   $B?<$5M%@hC5:w!&I}M%@hC5:w(B
+  * $BKDBg$J?t$N>!$AIi$1$N%Q%?!<%s!"2a5n$N@o$$$N%G!<%?!"6p$N5vMF0[F0$OFs$J$I$r$"$i$+(B
+  * $B$8$a5!3#$KF~NO$7$F$*$/!#5!3#$O6p$NG[CV$rFI$_<h$j!"KDBg$J?t$N%Q%?!<%s$NCf$+$i<!(B
+  * $B$N%Y%9%H$J0l<j$r7h$a$k$3$H$,$G$-$k!#%A%'%9$d>-4}$J$I$G$O0lDj$N@.2L$r>e$2$k$3$H(B
+  * $B$,$G$-$?!#(B
+  * 
+  * $B$G$-$J$$$3$H(B
+  * $BL5?t$N%Q%?!<%s$NCf$+$i!"4X78$N$J$$A*Br;h$r@Z$j<N$F$k$3$H!#(B
+  * $B"*%U%l!<%`LdBj(B
+  * 
+  * $B#1#9#8#0G/BeBhFs<!?M9)CNG=%V!<%`(B
+  * $B$b$75!3#$K@$3&$N$"$i$f$kCN<1$,=8Ls$5$l!"5!3#$,$=$NCN<1$rM}2r$9$l$P!"$I$s$JJ#;((B
+  * $B$JLdBj$,M?$($i$l$F$b5!3#$,@5$7$$Ez$($rF3$-=P$7$F$/$l$k$O$:$@!#(B $B$"$i$+$8$aDj5A$5(B
+  * $B$l$?<-=q$r5!3#$KF~NO$7$F$*$1$P!"5!3#$,$=$NJ8>O$H<-=q$r>H$i$79g$o$;!"?M4V$NLd$$(B
+  * $B$K5!3#$,H?1~$7Ez$($k$3$H$,$G$-$k!#(B
+  * 
+  * $B$G$-$J$$$3$H(B
+  * $B8=<B@$3&$NCN<1A4$F$rDj5A$9$k$3$H$O$G$-$J$$!#(B $B5!3#$OCN$C$F$$$kLdBj$KBP$7$F$OAGAa(B
+  * $B$/BP1~$G$-$?$,!"CN$i$J$$LdBj$K=P2q$&$H$F$bB-$b=P$J$+$C$?!#(B
+  *   $B"*?dO@$N8B3&(B $B5!3#$OK\Ev$N0UL#$rM}2r$7$F$$$k$o$1$G$O$J$$(B
+  * $B!!"*%7%s%\%k%0%i%&%s%G%#%s%0(B
+  * 
+  * $B#2#0#0#0G/Bh;0<!?M9)CNG=%V!<%`(B
+  * $B3NN(!&E}7W%b%G%k$K4p$E$/%Q%?!<%sG'<1$HJ,N`(B
+  * $B5!3#$N9b$$7W;;NO5Z$S9bB.=hM}G=NO$rIp4o$KBgNL$N%H%l!<%K%s%0%G!<%?$r;H$$J#;($JLd(B
+  * $BBj$r(BYes/No$B$KCV$-49$($?>e$G!"$I$s$J%G!<%?$,(BYes$B$J$N$+!"$^$?$I$s$J%G!<%?$,(BNo$B$J$N$+(B
+  * $B$K$D$$$F5,B'@-!J%Q%?!<%s!K$r8+$D$1=P$73X=,$7J,N`$7$?!#(B
+  * 
+  * $B$G$-$J$$$3$H(B
+  * $B5!3#3X=,$N%Q%?!<%s%b%G%k%Q%i%a!<%?$H$$$C$?FCD'NL@_7W!#(B
+  * $B?M4V$N4*$d%;%s%9$K$?$h$j!#KDBg$G:Y$+$$%Q%i%a!<%?D4@0$KL@$1Jk$l$k!#(B
+  * 
+  * $B!&%U%l!<%`LdBj(B
+  * $B$"$k2]Bj$,5!3#$KM?$($i$l$?$H$-$K!"$I$NCN<1$r;H$&$Y$-$+5!3#$,G'<1$G$-$J$$!#(B
+  * 
+  * $B!&%7%s%\%k%0%i%&%s%G%#%s%0(B
+  * $B5!3#$,CN<1$r5-9f$H$7$F$7$+G'<1$7$F$$$J$$$?$a$K!"CN<1$rAH$_9g$o$;$?35G0$r5!3#$,(B
+  * $BM}2r$G$-$J$$!#(B
+  * 
+  * $B!&FCD'NL@_7W(B
+  * $B5!3#$,BP>]J*$N2?$,FCD'$J$N$+H=$i$J$$!#(B
+  * 
+  * $B"*!!5!3#$,!V$"$k;v>]$N$I$NFCD'$KCmL\$7$F!"$I$N$h$&$J>pJs$r;H$($P$h$$$N$+!W$,$o$+(B
+  * $B$l$P2r7h$G$-$k!#(B
+  * 
+  * $B"*"*5!3#$,M?$($i$l$?%G!<%?$+$iFCD'$rCj=P$7!"(B
+  *   $B$=$NFCD'$K4p$E$$$?$I$NCN<1$r;H$&$Y$-$+$rH=CG$7(B($B%U%l!<%`LdBj2r7h!K(B
+  *   $B$=$NCN<1$rAH$_9g$o$;$?35G0$rM}2r$7(B($B%7%s%\%k%0%i%&%s%G%#%s%02r7h!K(B
+  *   $B>u67$dL\E*$K9g$o$;$FE,@Z$JCN<1$r<+$i<hF@$72r7h$G$-$k!#(B
+  * 
+  * $B#2#0#0#6G/Bh;M<!?M9)CNG=%V!<%`(B
+  * 
+  *   $B%G%#!<%W%i!<%K%s%0(B
+  *   $B5!3#$,M?$($i$l$?%G!<%?$+$i2?$,=EMW$JFCD'NL$G$"$k$+$r8+$D$1=P$9<jK!(B
+  * 
+  *   $B%W%l%H%l!<%K%s%0(B
+  * $B!!%K%e!<%i%k%M%C%H%o!<%/;~Be!!(B
+  * $B!!3X=,;~$KH/@8$7$?8m:9$r%M%C%H%o!<%/A4BN$K%U%#!<%I%P%C%/$9$k!#AX$,@Q$_=E$J$C$?(B
+  * $B%M%C%H%o!<%/$G$O!"8m:9$,>C$($F$7$^$&!#4v=E$K$b@Q$_=E$M$i$l$?AX$N%M%C%H%o!<%/A4(B
+  * $BBN$r0l$D$N5pBg$J%K%e!<%i%k%M%C%H%o!<%/$H$7$F!"0lEY$K3X=,$5$;$h$&$H$7$?$?$a!#(B
+  * 
+  * $B!!%G%#!<%W%i!<%K%s%0;~Be(B
+  *   $B<!85$NDc$$AX$NFCD'$r3X=,$7!"<!$NAX$NF~NO%G!<%?$H$7$F07$&!#$*$*$h$=$NA4BNA|$r(B
+  *   $B$D$+$s$G$+$i:YIt$NFCD'$r<!$NAX$G3X=,$9$k!#(B
+  * 
+  *   $B%I%m%C%W%"%&%H(B
+  * $B!!%M%C%H%o!<%/Fb$N$$$/$D$+$N$D$J$,$j$r%i%s%@%`$K@ZCG$73X=,$9$k!#$3$l$K$h$j3X=,(B
+  * $B$N%9%F%C%W$4$H$K0c$&%M%C%H%o!<%/$,7A@.$5$l!"%M%C%H%o!<%/$N=E$_$ND4@0$,$&$^$/$$(B
+  * $B$/!#(B
+  * 
+  * $B$G$-$J$$$3$H(B
+  * $B3X=,$,40N;$9$k$^$G$N%9%F%C%W$,D9$$!#ESJ}$b$J$$%j%=!<%9$,I,MW!#(B
+  * Google$B$NG-!!#1#0#0#0Bf$G#3F|(B
+  * 
+  * =====================================================================
+  * $B5!3#3X=,$K$h$kJ,N%(B
+  * 
+  * $B#2<oN`$N%G!<%?$K$O!"Fs$D$rJ,$1$k6-3&@~$,$"$j$=$&$@!#(B
+  * $B6-3&@~$r$I$3$K1|$+$r7h$a$l$P$h$$!#(B
+  * $B$G$OAaB.6-3&@~$r7h$a$h$&!#"*!!<B:]$K$OL@3N$K6-3&@~$rDj5A$9$k$3$H$OFq$7$$(B
+  * 
+  * $B@~7AJ,N%!!%G!<%?72$rD>@~$GJ,N%$9$k$3$H$,$G$-$k>l9g(B
+  * $BHs@~7AJ,N%!!%G!<%?72$rD>@~$G$OJ,N%$G$-$J$$>l9g(B
+  * 
+  * $B5!3#3X=,$K$h$j7hDj$5$l$k6-3&$r<1JL6-3&$H$$$$!"D>@~$+HsD>@~$r$+Ld$o$J$$(B
+  * 
+  *
+  *  	$BC1AX%K%e!<%i%k%M%C%H%o!<%/$NLdBjE@(B
+  *  		$BHs@~7ALdBj$r2r$/$3$H$,$G$-$J$$(B
+  *  
+  *  	$BF~NOAX$H=PNOAX$N4V$K1#$lAX$r2C$($?!"B?AX%K%e!<%i%k%M%C%H%o!<%/$G2r7h$G$-$k!#(B
+  *  	$B$J$<!"B?AX%K%e!<%i%k%M%C%H%o!<%/$,Hs@~7ALdBj$r2r$/$3$H$,$G$-$k$N$+!#(B
+  * 			$B"*!!$G$-$k(B
+  *  
+  *  	$B#1!%%f%K%C%H$rA}$d$9$3$H$G$h$jJ#;($J4X?t$rMH8@$9$kG=NO$r;}$F$k$h$&$K$J$C$?$+$i(B
+  *  	$B#2!%%b%G%k$,Hs@~7ALdBj$b2r$/$3$H$,$G$-$k$h$&$K$J$k$?$a$N80$O!"(B
+  * 	 		$B%P%C%/%W%m%Q%2!<%7%g%s%"%k%4%j%:%`!#(B
+  *  		$B=PNO$N8m:9$r%M%C%H%o!<%/A4BN$K5UEAGE$9$k$3$H$G!"(B
+  *  		$B3FH?I|$G%b%G%k$,%H%l!<%K%s%0%G!<%?$KE,9g$9$k$h$&99?7$5$l!"(B
+  *  		$B:G=*E*$K%G!<%?$N4X?t$K6a;w$9$k$h$&:GE,2=$5$l$k!#(B
+  * 
+  */
 
-１９５０年代後半第一次人工知能ブーム
-人間が定義した決められたルールに基づいた探索プログラム
-  深さ優先探索・幅優先探索
-膨大な数の勝ち負けのパターン、過去の戦いのデータ、駒の許容異動は二などをあらか
-じめ機械に入力しておく。機械は駒の配置を読み取り、膨大な数のパターンの中から次
-のベストな一手を決めることができる。チェスや将棋などでは一定の成果を上げること
-ができた。
-
-できないこと
-無数のパターンの中から、関係のない選択肢を切り捨てること。
-→フレーム問題
-
-１９８０年代第二次人工知能ブーム
-もし機械に世界のあらゆる知識が集約され、機械がその知識を理解すれば、どんな複雑
-な問題が与えられても機械が正しい答えを導き出してくれるはずだ。 あらかじめ定義さ
-れた辞書を機械に入力しておけば、機械がその文章と辞書を照らし合わせ、人間の問い
-に機械が反応し答えることができる。
-
-できないこと
-現実世界の知識全てを定義することはできない。 機械は知っている問題に対しては素早
-く対応できたが、知らない問題に出会うとても足も出なかった。
-  →推論の限界 機械は本当の意味を理解しているわけではない
-　→シンボルグラウンディング
-
-２０００年第三次人工知能ブーム
-確率・統計モデルに基づくパターン認識と分類
-機械の高い計算力及び高速処理能力を武器に大量のトレーニングデータを使い複雑な問
-題をYes/Noに置き換えた上で、どんなデータがYesなのか、またどんなデータがNoなのか
-について規則性（パターン）を見つけ出し学習し分類した。
-
-できないこと
-機械学習のパターンモデルパラメータといった特徴量設計。
-人間の勘やセンスにたより。膨大で細かいパラメータ調整に明け暮れる。
-
-・フレーム問題
-ある課題が機械に与えられたときに、どの知識を使うべきか機械が認識できない。
-
-・シンボルグラウンディング
-機械が知識を記号としてしか認識していないために、知識を組み合わせた概念を機械が
-理解できない。
-
-・特徴量設計
-機械が対象物の何が特徴なのか判らない。
-
-→　機械が「ある事象のどの特徴に注目して、どのような情報を使えばよいのか」がわか
-れば解決できる。
-
-→→機械が与えられたデータから特徴を抽出し、
-  その特徴に基づいたどの知識を使うべきかを判断し(フレーム問題解決）
-  その知識を組み合わせた概念を理解し(シンボルグラウンディング解決）
-  状況や目的に合わせて適切な知識を自ら取得し解決できる。
-
-２００６年第四次人工知能ブーム
-
-  ディープラーニング
-  機械が与えられたデータから何が重要な特徴量であるかを見つけ出す手法
-
-  プレトレーニング
-　<>ニューラルネットワーク時代　
-　学習時に発生した誤差をネットワーク全体にフィードバックする。層が積み重なった
-ネットワークでは、誤差が消えてしまう。幾重にも積み重ねられた層のネットワーク全
-体を一つの巨大なニューラルネットワークとして、一度に学習させようとしたため。
-
-　<>ディープラーニング時代
-  次元の低い層の特徴を学習し、次の層の入力データとして扱う。おおよその全体像を
-  つかんでから細部の特徴を次の層で学習する。
-
-  ドロップアウト
-　ネットワーク内のいくつかのつながりをランダムに切断し学習する。これにより学習
-のステップごとに違うネットワークが形成され、ネットワークの重みの調整がうまくい
-く。
-
-できないこと
-学習が完了するまでのステップが長い。途方もないリソースが必要。
-Googleの猫　１０００台で３日
-
-=====================================================================
-機械学習による分離
-
-２種類のデータには、二つを分ける境界線がありそうだ。
-境界線をどこに奥かを決めればよい。
-では早速境界線を決めよう。→　実際には明確に境界線を定義することは難しい
-
-線形分離　データ群を直線で分離することができる場合
-非線形分離　データ群を直線では分離できない場合
-
-機械学習により決定される協会を識別境界といい、直線か非直線をか問わない
-
-<>SVM(Support Vector Machine)
-分類する各グループ間の距離が最大となるような識別境界を求める手法
-どのグループからも距離が最も大きい真ん中を識別境界に置く。
-  →マージン最大化
-
-<>ロジスティック回帰モデル Logistic regression model
-ベルヌーイ分布における統計的回帰モデル
+		/**
+		 * $B#1!%%K%e!<%i%k%M%C%H%o!<%/(B 
+		 * 
+		 * $B%Q!<%;%W%H%m%s(B $B%9%F%C%W4X?t(B 
+		 * $B%Q!<%;%W%H%m%s$O!"%K%e!<%i%k%M%C%H%o!<%/$N%"%k%4%j%:%`$NCf$G$b(B
+		 * $B:G$bC1=c$J:n$j$r$7$?%b%G%k$G$"$j!"Fs$D$N%/%i%9$r@~7A<1JL$G$-$k(B 
+		 * $B%b%G%k$G%K%e!<%i%k%M%C%H%o!<%/$N867?$G$b$"$k!#(B
+		 * $B%G!<%?%;%C%H$,@~7A$KJ,$1$i$l$k$3$H$,J]>Z$5$l$F$$$k>l9g!"%"%k%4%j%:%`$N@:(B
+		 * $BEY$O3X=,N($NCM$H$OL54X78$G$"$k$?$a!"3X=,N($NCM$O#1$G$h$$!#(B
+		 */
+//		Perceptrons pt = new Perceptrons(2);
+//		pt.setDataSet(); // $B%G!<%?%;%C%H(B
+//		pt.buildModel(); // $B%b%G%k$N9=C[(B
+//		pt.evaluetion(); // $BI>2A%F%9%H(B
+		/**
+		 * $B%m%8%9%F%#%C%/2s5"(B $B%7%0%b%$%I4X?t(B
+		 * $BO"B3CM$r<h$kFs$D$NJQ?t$+$i$J$k<0$rA[Dj$7$?2s5"%b%G%k$G!"(B
+		 * $B%Q!<%;%W%H%m%s$r0lHL2=$7$?@~7AJ,N%%b%G%k$G!"%K%e!<%i%k%M%C%H%o!<%/(B $B$N0l(B
+		 * $B$D$G$"$k!#(B
+		 * $B%Q!<%;%W%H%m%s$G$O!"3h@-2=4X?t$K%9%F%C%W4X?t$rMQ$$$F$$$k$,!"(B $B%m%8%9%F%#%C(B
+		 * $B%/2s5"$G$O!"%7%0%b%$%I4X?t$rMQ$$$F$$$k!#(B
+			 * $B%7%0%b%$%I4X?t$O!"G$0U$N<B?t$r#0$+$i#1$NCM$K<LA|$9$k!#(B
+		 * $B$D$^$j%m%8(B $B%9%F%#%C%/2s5"$N=PNO$O!"$=$l$>$l$N%/%i%9$N;v8e3NN($H8+$J$9$3(B
+		 * $B$H$,$G$-$k!#(B
+		 */
+//		LogisticRegression lr = new LogisticRegression(2, 3);
+//		lr.setDataSet();
+//		lr.buildLogisticRegressionModel();
+//		lr.evaluate();
+//		lr.print();
+		/**
+		 * $BB?%/%i%9%m%8%9%F%#%C%/2s5"(B $B%=%U%H%^%C%/%94X?t(B
+		 * $B%m%8%9%F%#%C%/2s5"$OB?%/%i%9J,N`$K$b1~MQ$9$k$3$H$,$G$-$k!#(B
+		 * 2$B%/%i%9J,N`$G$O!"3h@-2=4X?t$,%7%0%b%$%I4X?t$G$"$j!"=PNO$,#0$+$i#1$K$J$k(B
+		 * $B$3$H$G!"%G!<%?$,$I$A$i$N%/%i%9$K=jB0$9$k3NN($,9b$$$+$r5a$a$k$3$H$,$G$-$?!#(B
+		 * $B%/%i%9?t$,#K$N$H$-$O!"3F%/%i%9$N=jB0EY$rI=$93NN)%Y%/%H%k!J=PNO$,#K<!85!K$H(B 
+		 * $B$9$k$3$H$GB?%/%i%9%G!<%?$bJ,N`$G$-$k!#(B
+		 * $B%7%0%b%$%I4X?t$NB?JQNLHG$G$"$k%=%U%H%^%C%/%94X?t$rMQ$$$k!#(B
+		 */
+//		LogisticRegressionXOR lrXOR = new LogisticRegressionXOR(2, 3);
+//		lrXOR.setDataSet();
+//		lrXOR.buildLogisticRegressionModel();
+//		lrXOR.print();
+		/**
+		 * $BB?AX%Q!<%;%W%H%m%s!JB?AX%K%e!<%i%k%M%C%H%o!<%/!K(B 
+		 * $BF~=PNO(B($B%m%8%9%F%#%C%/2s5"%b%G%k!K$H1#$lAX(B
+		 * 
+		 * $BC1AX%K%e!<%i%k%M%C%H%o!<%/$K$OBg$-$JLdBj$,$"$C$?!#(B
+		 * $B@~7AJ,N%$G$-$kLdBj$K$O8zN(E*$J%Q!<%;%W%H%m%s$d%m%8%9%F%#%C%/2s5"$G$"$k$,!"(B
+		 * $BHs@~7ALdBj$rA4$/2r$/$3$H$,$G$-$J$$$N$G$"$k!#(B
+		 * $B:G$bC1=c$J(BXOR$B!JGSB>E*O@M}OBLdBj!K$G$5$($H$/$3$H$,$G$-$J$$!#(B
+		 * $B8=<BLdBj$N$[$H$s$I$OHs@~7A$G$"$k$?$a!"%Q!<%;%W%H%m%s$d%m%8%9%F%#%C%/2s5"(B
+		 * $B$G$O<BMQ@-$,$J$$!#(B
+		 * $B$=$3$GHs@~7A$NLdBj$K$bBP1~$G$-$k$h$&$K%"%k%4%j%:%`$r2~NI$7$?$b$N$,!"(B
+		 * $BB?AX%K%e!<%i%9%M%C%H%o!<%/$G$"$k!#(B
+		 * $BF~NOAX$H=PNOAX$N4V$K!V1#$lAX!W$H8F$P$l$kAX$r2C$($k$3$H$G!"(B
+		 * $B%M%C%H%o!<%/$,MM!9$J%Q%?!<%s$rI=8=$G$-$k$h$&$K$7$?!#(B
+		 * $B8D!9$G=EMW$J$N$O!"1#$lAX$rHt$S1[$($?F~NOAX$H=PNOAX$ND>7k$rF3F~$;$:!"(B
+		 * $BI,$:!"%U%#!<%I%U%)%o!<%I%M%C%H%o!<%/$N9=B$$K$7$F$*$/$3$H!#(B
+		 * $B$3$&$9$k$3$H$G!"1#$lAX$N?t$,B?$/$J$m$&$H$b!"?t3XE*$KJ#;($K$J$j$9$.$:$K!"(B
+		 * $BG$0U$N4X?t$r6a;w$9$k$3$H$,$G$-$k!#(B
+		 * $B1#$lAX$K$O(BHiddenLayer$B%/%i%9!"=PNOAX$K$O(BLogisticRegression$B%/%i%9$,Dj5A$5$l$F$$$k!#(B
+		 * $B=PNO$N8m:9$r%M%C%H%o!<%/A4BN$K5UEAGE$9$k$3$H$K$h$j!"3FH?I|$G%b%G%k$,%H%l!<(B
+		 * $B%K%s%0%G!<%?$KE,9g$9$k$h$&99?7$5$l$k%P%C%/%W%m%Q%2!<%7%g%s$,80$H$J$k!#(B
+		 */
+//		MultiLayerPerceptrons mlpt = new MultiLayerPerceptrons(2, 3, 2, new Random(123));
+//		mlpt.setDataSet();
+//		mlpt.buildMultiLayerPerceptronsModel();
+//		mlpt.evaluate();
+//		mlpt.print();
+		
+/**
+  * ****************************************************
+  * Java$B$G3X$V%K%e!<%i%k%M%C%H%o!<%/$H%G%#!<%W%i!<%K%s%0(B
+  * $B0lHL<RCDK!?M(B $B6&F1DL?.<R!!(Bsuzuki.iichiro@kyodonews.jp
+  * 
+  * $B#1!%%K%e!<%i%k%M%C%H%o!<%/(B
+  * $B#2!%%G%#!<%W%K%e!<%i%k%M%C%H%o!<%/(B $B"+(B
+  * 
+  * ****************************************************
+  * 
+  *  $BA09`$+$i$N$"$i$9$8(B
+  *  $B%Q!<%;%W%H%m%s$G$O2r7h$G$-$J$+$C$?Hs@~7AJ,N`$b!"B?AX%K%e!<%i%k%M%C%H%o!<%/$G(B
+  *  $B$9$J$o$A!"F~NOAX$H=PNOAX$N4V$K1#$lAX$rDI2C$9$k$3$H$G!"3X=,$9$k$3$H$,$G$-$?!#(B
+  *  
+  *  $BM}M3(B
+  *  $B%K%e!<%m%s$N?t$,A}$($k$3$H$G!"%K%e!<%i%k%M%C%H%o!<%/A4BN$GI=8=$G$-$k%Q%?!<%s$,(B
+  *  $BA}$($?$+$i!#(B
+  *  
+  *  $B$G$O!"1#$lAX$N?t$r$b$C$HA}$d$;$P!#1#$lAX$r$b$C$H@Q$_=E$M$l$P!"$I$s$J$KJ#;($J(B
+  *  $BLdBj$G$b2r7h$G$-$k$N$G$O$J$$$+!#(B
+  *  $B"*$3$N;n$_$O$&$^$/$$$+$J$+$C$?!#(B
+  *  $BC1=c$KAX$r@Q$_=E$M$k$@$1$G$O5U$K!"AX$N?t$,>/$J$$$b$N$h$jM=B,$N@:EY$,2<$,$C$F$7$^$&!#(B
+  *  
+  *  $B$J$<!#(B
+  *  $B%U%#!<%I%U%)%o!<%I%M%C%H%o!<%/$,;}$DFCD'$K860x$,$"$C$?!#(B
+  *  $BB?AX%K%e!<%i%k%M%C%H%o!<%/$G8zN(E*$K3X=,8m:9$r%M%C%H%o!<%/A4BN$KEAGE$9$k$K$O!"(B
+  *  $B%P%C%/%W%m%Q%2!<%7%g%s%"%k%4%j%:%`$,MQ$$$i$l$k!#$3$N%"%k%4%j%:%`$G$O!"(B
+  *  $B8m:9$O%K%e!<%i%k%M%C%H%o!<%/$N3FAX$r5U=g$K!"0lAX$:$D=gHV$KF~NOAX$^$GC)$k!#(B
+  *  $B=PNOAX$G$N8m:9$rF~NOAX$^$G5UEAGE$9$k$3$H$G!"1#$=$&$4$H$K=gHV$K%M%C%H%o!<%/$N=E$_$,(B
+  *  $BD4@0$5$l!"%M%C%H%o!<%/A4BN$N=E$_$,:GE,2=$5$l$k!#AX$N?t$,B?$/$J$C$?$H$-$K$O!"(B
+  *  $BAX$r$5$+$N$\$k$4$H$K8m:9$,<!Bh$K>C$($F9T$C$F$7$^$$!"%M%C%H%o!<%/$N=E$_$rD4@0$G$-$J$$!#(B
+  *  $BF~NOAX$K6a$$$=$&$G$O!"8m:9$,A4$/%U%#!<%I%P%C%/$5$l$J$/$J$C$F$7$^$C$?$N$@!#(B
+  *  
+  *  $BAX$HAX$N4V$,L)$K$D$J$,$C$?%K%e!<%i%k%M%C%H%o!<%/$K$O!"=E$_$rD4@0$9$k5!G=$,7gG!$7$F(B
+  *  $B$7$^$C$F$$$?!#$3$NLdBj$r!"8{G[>C<:LdBj$H$$$&!#(B
+  *  
+  *  $B%G%#!<%W%i!<%K%s%0$G$O$3$NLdBj$O5/$-$J$$!#$J$<$+!#(B
+  *  
+  *  $B#1!%%G%#!<%W%S%j!<%U%M%C%H(B
+  *  $B#2!%@QAX%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@(B
+  *  
+  *  $B>e5-Fs$D$N%"%k%4%j%:%`$K$h$C$F!"?<AX$K$b$+$+$o$i$:9b$$M=B,@:EY$r5-O?$7$?!#(B
+  *  $B$3$NFs$D$N%"%k%4%j%:%`$K6&DL$9$k!"8{G[>C<:LdBj$r2r7h$7$?<jK!$H$O2?$+!#(B
+  *  
+  *  $B%l%$%d!<%o%$%:%H%l!<%K%s%0(B   $B3FAX$4$H$K3X=,$r$9$k$H$$$&<jK!!#(B
+  *  $B$3$l$K$h$j!"3FAX$,$=$l$>$lFHN)$7$F%M%C%H%o!<%/$N=E$_$rD4@0$9$k$?$a!"(B
+  *  $BAX$,4v=E$K@Q$_=E$J$C$?$b!"%M%C%H%o!<%/A4BN!J$9$J$o$A%b%G%k$N%Q%i%a!<%?!K$,E,@Z$K:GE,2=(B
+  *  $B$5$l$k$h$&$K$J$C$?!#(B
+  *  
+  *  $B%K%e!<%i%k%M%C%H%o!<%/$G$O!"%f%K%C%H?t$dAX$N?t$,B?$$$[$I!"M}O@>e$OI=8=NO$,A}$(!"(B
+  *  $B2r$/$3$H$,$G$-$kLdBj$bA}$($k!#$=$l$,$&$^$/$$$+$J$+$C$?$N$O!"8m:9$r3FAX$K@5$7$/%U%#!<%I%P%C%/$G$-$:!"(B
+  *  $B%M%C%H%o!<%/A4BN$H$7$F$N%Q%i%a!<%?$rE,@Z$KD4@0$G$-$J$+$C$?$+$i$@!#(B
+  *  
+  *  $B%G%#!<%W%i!<%K%s%0$G$O!"%l%$%d!<%o%$%:%H%l!<%K%s%0$K$h$j!"(B
+  *  $B3FAX$,$=$l$>$lFHN)$7$F%M%C%H%o!<%/$N=E$_$rD4@0$9$k$?$a!"AX$,4v=E$K@Q$_=E$J$C$F$b!"(B
+  *  $B%M%C%H%o!<%/A4BN!J$9$J$o$A%b%G%k$N%Q%i%a!<%?!K$,E,@Z$K:GE,2=$5$l$k$h$&$K$J$C$?!#(B
+  *  
+  *  $B!V=PNOAX$GH/@8$7$?8m:9$rF~NOAX$^$G9T$-$K5UEAGE$7$F3X=,$7$h$&$H$7$?$i$&$^$/$$$+$J$+$C$?$N$G!"(B
+  *  $B3FAX$4$H$KJ,$1$F3X=,$r9T$$!"8m:9$rAX$4$H$K$9$0$KH?1G$5$;$k$3$H$G$&$^$/$$$/$h$&$K$J$C$?!W(B
+  *  
+  *  $B%l%$%d!<%o%$%:%H%l!<%K%s%0$N%F%/%K%C%/(B
+  *  $B!&%W%l%H%l!<%K%s%0!J;vA03X=,(B $B3FAX$4$H$N3X=,!K(B
+  *  $B!&%U%!%$%s%A%e!<%K%s%0!JHyD4@0(B $B%M%C%H%o!<%/A4BN$KBP$9$kD4@0!K(B
+  *  
+  *  $B!VA08e$NAX$,$H$b$K1#$l$=$&$G$O!"F~NOAX$b=PNOAX$b$J$$$,!"$I$N$h$&$K3X=,$9$l$P$h$$$N$@$m$&!#(B
+  *  $B2?$,F~NO$K$J$j!"$=$7$F$I$N$h$&$K=PNO$9$l$P$h$$$N$@$m$&!W(B
+  *  
+  *  $B%K%e!<%i%k%M%C%H%o!<%/$G$O!"F~NOAX$H1#$lAX!"1#$lAX$H=PNOAX$N4V$G!"%M%C%H%o!<%/%Q%i%a!<%?(B
+  *  $B=E$_$H%P%$%"%9$rD4@0$9$kI,MW$,$"$C$?!#(B
+  *  $B%G%#!<%W%i!<%K%s%0$G$O!"2C$($F!"1#$lAX$H1#$lAX$N4V$G$b=E$_$H%P%$%d%9$ND4@0$,I,MW$G$"$k!#(B
+  *  
+  *  $BF~NO$K$D$$$F(B
+  *  	$BA0$NAX$+$iEAGE$7$F$-$?CM$,$=$N$^$^F~NO$K$J$k!#(B
+  *  	$BA0$NAX$+$iEAGE$7$F$-$?CM$H$O!"%M%C%H%o!<%/$N=E$_$rMQ$$$FA0$NAX$+$i8=:_$NAX$^$G=gEAGE$7$F$-$?CM!#(B
+  *  	$B"*(B	$B0l$D0J>eA0$NAX$,3X=,$7$?FCD'$,8=:_$NAX$NF~NO$H$J$j!"(B
+  *  		$B8=:_$NAX$ODl$+$i0!?7$?$KM?$($i$l$?%G!<%?$NFCD'$r3X$S<h$k(B
+  *  		$B"*!!F~NO%G!<%?$+$iCJ3,E*$KFCD'$r3X$S<h$C$F$$$/(B
+  *  			$B"*!!AX$,$h$j?<$/$J$k$[$I!"$h$j9b<!$JFCD'$r3X=,$9$k(B
+  * 	$B!V5!3#$,35G0$r3X$S<h$l$k$h$&$K$J$C$?!W(B
+  * 
+  * $B=PNO$K$D$$$F(B
+  * 	$B%G%#!<%W%S%j!<%U%M%C%H$H@QAX%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@$H$b$K!"<!$N>r7o$rK~$?$9$h$&$K3X=,$r$9$k!#(B
+  * 	$B!V=PNOCM$HF~NOCM$HF1$8$K$J$k$h$&$K3X=,$9$k!W(B
+  * 	$B"*!!F~NOAX$+$iF~$C$F$-$?CM$O!"1#$lAX$rDL$C$F$^$?F~NOAX$KLa$k!#(B
+  * 		$B$=$N;~$N8m:9$,$J$/$J$k$h$&$K!J$9$J$o$A=PNOCM$HF~NOCM$,0lCW$9$k$h$&$K!K%M%C%H%o!<%/$N=E$_$rD4@0$9$k!#(B
+  *			 
+  * $B%U%!%$%s%A%e!<%K%s%0(B
+  * 	$BLr3d(B
+  * 
+  * 	1. $B=PNOAX<jA0$^$G$N3FAX$KBP$7$F%W%l%H%l!<%K%s%0$,=*N;$7$?$i!"(B
+  * 	$B=PNOAX$r2C$($?%K%e!<%i%k%M%C%H%o!<%/A4BN$KBP$7$F%H%l!<%K%s%0%G!<%?$G65;UM-$j3X=,$r9T$&!#(B
+  * 	$B!V=PNOAX$K$*$1$k65;UM-$j3X=,$K$O!"(B
+  * 		$B7W;;NL$HF@$i$l$k@:EY$H$N%P%i%s%9$+$i%m%8%9%F%#%C%/2s5"$rMQ$$$k$3$H$,B?$$!#!W(B
+  * 	2. $B%G%#!<%W%K%e!<%i%k%M%C%H%o!<%/A4BN$N=E$_$N:G=*D4@0$r9T$&!#(B
+  *		$B!V$9$J$o$A%P%C%/%W%m%Q%2!<%7%g%s%"%k%4%j%:%`!W$,E,MQ$5$l$k!#(B	
+  * 
+  * 	$B8{G[>C<:LdBj$OH/@8$7$J$$$N$+!)(B
+  *		$B%W%l%H%l!<%K%s%0$r64$s$@>l9g!"%M%C%H%o!<%/$N=E$_$O%W%l%H%l!<%K%s%0$K$h$C$F$[$\D4@0$5$l$?>uBV$K$J$j!"(B
+  *		$B$=$N8e$G3X=,$,9T$o$l$k!#$=$N$?$aE,@Z$J8m:9$,F~NOAX$K6a$$AX$^$G$-$A$s$HEAGE$9$k!#(B
+  * 
+  *	$B%G%#!<%W%i!<%K%s%0(B
+  *		$B%W%l%H%l!<%K%s%0$G$O!"%b%G%k$N%Q%i%a!<%?$OAX$4$H$K:GE,2=$5$l!"(B
+  *		$B%U%!%$%s%A%e!<%K%s%0$G0l$D$N%G%#!<%W%K%e!<%i%k%M%C%H%o!<%/$H$7$FD4@0$5$l$k!#(B
+  *
+  * 
+  * $B%G%#!<%W%i!<%K%s%0$N%"%k%4%j%:%`(B
+  *  $B#1!%%G%#!<%W%S%j!<%U%M%C%H(B
+  *  	$B%W%l%H%l!<%K%s%0(B ($B@)Ls$D$-%\%k%D%^%s%^%7%s!K(B
+  *  	$B%U%!%$%s%A%e!<%K%s%0(B 
+  *  $B#2!%%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@(B
+  *  	$B%W%l%H%l!<%K%s%0!J%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@!K(B
+  *  	$B%U%!%$%s%A%e!<%K%s%0(B
+  *  $B#3!%@QAX%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@(B
+  *  	$B%W%l%H%l!<%K%s%0!J@QAX%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@!K(B
+  *  	$B%U%!%$%s%A%e!<%K%s%0(B
+  *  $B#4!%%I%m%C%W%"%&%H(B (ReLU $B%=%U%H%W%i%94X?t(B)
+  *  $B#5!%>v$_9~$_%K%e!<%i%k%M%C%H%o!<%/!J9b<!85%K%e!<%i%k%M%C%H%o!<%/!K(B
+  *  	$B>v$_9~$_(B
+  *  	$B%W!<%j%s%0(B
+  *  
+  */
+		/**
+		 * 		$B%G%#!<%W%S%j!<%U%M%C%H(B
+		 *		$B%W%l%H%l!<%K%s%0!J@)Ls$D$-%\%k%D%^%s%^%7%s!K(B
+		 */
+//        RestrictedBoltzmannMachines RBM = new RestrictedBoltzmannMachines();
+//        RBM.setDataSet();
+//        RBM.buildBoltzmannMachinesModel();
+//        RBM.evaluate();
+		/**
+		 * 		$B%G%#!<%W%S%j!<%U%M%C%H(B
+		 * 		$B%U%!%$%s%A%e!<%K%s%0!J%m%8%9%F%#%C%/2s5"%b%G%k!K(B
+		 * 			$B%G%b%G!<%?$G$O!"F~NOAX$N%f%K%C%H?t$O(B60$B!"1#$lAX$O(B2$BAX!#(B
+		 * 			$B$I$A$i$N1#$lAX$b%f%K%C%H?t$O(B20$B!$=PNOAX$N%f%K%C%H?t$O(B3$B$K$J$C$F$$$k!#(B
+		 * 
+		 *  $B@)Ls$D$-%\%k%D%^%s%^%7%s(B
+		 *  $BB>$NA4$F$N%f%K%C%H$H7k9g$7$?%M%C%H%o!<%/(B
+		 */
+//		DeepBeliefNets DBN = new DeepBeliefNets();
+//        DBN.setDataSet();
+//        DBN.buildDeepBeleifNetsModel();
+//        DBN.evaluate();
+        /**
+         * 	
+		 *  	$B%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@(B
+		 *  		$B%W%l%H%l!<%K%s%0!J%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@!K(B
+		 * 			$B%U%!%$%s%A%e!<%K%s%0!J%m%8%9%F%#%C%/2s5"%b%G%k!K(B
+		 * 
+		 * 		$B%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@(B
+		 *  		$B%W%l%H%l!<%K%s%0$NFCD'$G$"$k=PNOCM$,F~NOCM$HF1$8$K$J$k$h$&$K3X=,$9$k$H$$$&ItJ,$,$h$j6/D4$5$l$?<jK!(B
+		 *  	
+		 *  	$B!VF~NO%G!<%?$K0U?^E*$K%N%$%:$r2C$($F%G!<%?$N0lIt$rB;=}$5$;$F$7$^$&!#(B
+		 *  	$B$=$NB;=}$7$?%G!<%?$r85$NF~NO%G!<%?$KI|85$9$k$h$&$K!"%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@$O3X=,$9$k!#!W(B
+         */
+//		DenoisingAutoencoders DA = new DenoisingAutoencoders();
+//		DA.setDataSet();
+//		DA.buildDenoisingAutoencodersModel();
+//		DA.evaluate();
+		/**
+		 *  	$B@QAX%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@(B
+		 *  		$B%W%l%H%l!<%K%s%0!J@QAX%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@!K(B
+		 * 			$B%U%!%$%s%A%e!<%K%s%0!J%m%8%9%F%#%C%/2s5"%b%G%k!K(B
+		 * 
+		 * 		$B"(@QAX%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@(B
+		 * 			$B%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@$NAX$r@Q$_=E$M$?%G%#!<%W%K%e!<%i%k%M%C%H%o!<%/(B
+		 *  	
+		 */
+//		StackedDenoisingAutoencoders SDA = new StackedDenoisingAutoencoders();
+//		SDA.setDataSet();
+//		SDA.buildStackedDenoisingAutoencodersModel();
+//		SDA.evaluate();
+		/**
+		 * $B%I%m%C%W%"%&%H(B
+		 *  
+		 * $BC1=c$KB?$/$NAX$r@Q$_=E$M$?%K%e!<%i%k%M%C%H!<%/$G$O!"ESCf$^$GJdB-$G$-$F$$$?=PNO8m:9$,(B
+		 * $B=y!9$K>C$($F9T$C$F$7$^$&$H$$$&LdBj!J8{G[>C<:LdBj!K$,@8$8$k$?$aNI$$@:EY$,=P$J$+$C$?!#(B
+		 * 
+		 * $B$3$NLdBj$rKI$0$?$a!"%W%l%H%l!<%K%s%0$,I,MW(B
+		 * 
+		 * $B%W%l%H%l!<%K%s%0$K$*$1$k!"%l%$%d!<%o%$%:%H%l!<%K%s%0$,LdBj$r2r7h$7$?!#(B
+		 * 
+		 * $B%l%$%d!<%o%$%:%H%l!<%K%s%0(B
+		 * 		$B%G%#!<%W%S%j!<%U%M%C%H(B
+		 * 		$B@QAX%G%N%$%8%s%0!&%*!<%H%(%s%3!<%@(B
+		 * 
+		 * $B"*(B $B%W%l%H%l!<%K%s%0$J$7$N%G%#!<%W%i!<%K%s%0%"%k%4%j%:%`$K$h$C$F!"(B
+		 * 		$B9b$$@:EY$d@53N@-$rF@$k$3$H$O$G$-$J$$$N$+(B
+		 * 
+		 * $B!V%M%C%H%o!<%/$,L)$K$D$J$,$C$F$7$^$C$F$$$k$3$H$,LdBj$J$i$P!"(B
+		 * 		$BL5M}LpM}!VAB!W$K$7$F$7$^$($P$h$$!#(B
+		 * 			$B$=$&$9$l$P8{G[>C<:LdBj$b5/$3$i$:E,@Z$K3X=,$G$-$k$O$:$@!#!W(B
+		 * 
+		 *	$B%G%N%$%8%s%0%*!<%H%(%s%3!<%@(B
+		 *		$BF~NOAX$N%f%K%C%H$N$_$KB;<:$r2C$($F3X=,$,9T$o$l$k(B
+		 *		$BF1$8B;<:%G!<%?%b%G%k$,!"3X=,$G0l4S$7$F;H$o$l$k(B
+		 *	$B%I%m%C%W%"%&%H(B
+		 *		$B1#$lAX$N%f%K%C%H$K%I%m%C%W%"%&%H%^%9%/$r$+$1$k(B 
+		 *		$B3F3X=,$NH?I|$4$H$KJL$N%I%m%C%W%"%&%H%^%9%/$,E,MQ$5$;$k(B
+		 *
+		 *	$B%I%m%C%W%"%&%H%^%9%/$O!"3X=,%k!<%W$4$H$K0[$J$C$?7A$N%K%e!<%i%k%M%C%H%o!<%/$G3X=,$,9T$o$l$k!#(B
+		 *	ReLU $B!J%=%U%H%W%i%94X?t!K(B
+		 */
+//		Dropout DO = new Dropout();
+//		DO.setDataSet();
+//		DO.buildDropoutModel();
+//		DO.evaluate();
+		/**
+		 * $B>v$_9~$_%K%e!<%i%k%M%C%H%o!<%/(B
+		 * $B8=<B@$3&$r8+$k$H!"BP>]$H$J$k%G!<%?$,$$$D$b0l<!85$G$"$k$H$O8B$i$J$$!#(B
+		 * $B$=$N:G$bE57?E*$J%1!<%9$O2hA|%G!<%?!#!!"*>v$_9~$_%K%e!<%i%k%M%C%H%o!<%/(B 
+		 * 
+		 * 
+		 * 
+		 */
+//		ConvolutionalNeuralNetworks CNN = new ConvolutionalNeuralNetworks();
+//		CNN.setDataSet();
+//		CNN.buildConvolutionalNeuralNetworksModel();
+//		CNN.evaluate();
+	}
+}

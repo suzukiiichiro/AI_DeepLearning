@@ -8,6 +8,37 @@ import java.util.function.DoubleFunction;
 
 public class DeepLearning {
 	public static void main(String[] args) {
+
+/**
+ * 
+ * １．第一章　ニューラルネットワーク
+ * 	 １．単層ニューラルネットワーク
+ * 			1. パーセプトロン（ステップ関数）
+ * 			2. ロジスティック回帰（シグモイド関数）
+ * 			3. 多クラスロジスティック回帰（ソフトマックス関数）
+ * 
+ *	 ２．多層ニューラルネットワーク
+ *			4. 多層パーセプトロン（多層ニューラルネットワーク） 
+ *			   入出力層(ロジスティック回帰モデル)/隠れ層
+ *
+ *
+ * ２．第二章　ディープラーニング
+ *   １．ディープビリーフネット
+ *     	 	プレトレーニング (制約つきボルツマンマシン）
+ *   	 	ファインチューニング (ロジスティック回帰モデル）
+ *   
+ *   ２．デノイジング・オートエンコーダ
+ *   	 	プレトレーニング（デノイジング・オートエンコーダ）
+ *   	 	ファインチューニング(ロジスティック回帰モデル）
+ *   
+ *   ３．積層デノイジング・オートエンコーダ
+ *   	 	プレトレーニング（積層デノイジング・オートエンコーダ）
+ *   	 	ファインチューニング(ロジスティック回帰モデル）
+ *   
+ *   ４．ドロップアウト (ReLU ソフトプラス関数)
+ *   
+ *   ５．畳み込みニューラルネットワーク（高次元ニューラルネットワーク）
+ */
 /**
   * ****************************************************
   * Javaで学ぶニューラルネットワークとディープラーニング
@@ -111,38 +142,22 @@ public class DeepLearning {
   * 
   * 機械学習により決定される境界を識別境界といい、直線か非直線をか問わない
   * 
-  * SVM(Support Vector Machine)
-  * 分類する各グループ間の距離が最大となるような識別境界を求める手法
-  * どのグループからも距離が最も大きい真ん中を識別境界に置く。
-  *   →マージン最大化
+  *
+  *  	単層ニューラルネットワークの問題点
+  *  		非線形問題を解くことができない
+  *  
+  *  	入力層と出力層の間に隠れ層を加えた、多層ニューラルネットワークで解決できる。
+  *  	なぜ、多層ニューラルネットワークが非線形問題を解くことができるのか。
+  * 			→　できる
+  *  
+  *  	１．ユニットを増やすことでより複雑な関数を揚言する能力を持てるようになったから
+  *  	２．モデルが非線形問題も解くことができるようになるための鍵は、
+  * 	 		バックプロパゲーションアルゴリズム。
+  *  		出力の誤差をネットワーク全体に逆伝播することで、
+  *  		各反復でモデルがトレーニングデータに適合するよう更新され、
+  *  		最終的にデータの関数に近似するよう最適化される。
+  * 
   */
-
-/**
- * １．ニューラルネットワーク
- * 
- * 		単層ニューラルネットワーク
- * 			1. パーセプトロン
- * 			2. ロジスティック回帰
- * 			3. 多クラスロジスティック回帰
- *		多層ニューラルネットワーク
- *			4. 多層ニューラルネットワーク
- *
- *
- *  	単層ニューラルネットワークの問題点
- *  		非線形問題を解くことができない
- *  
- *  	入力層と出力層の間に隠れ層を加えた、多層ニューラルネットワークで解決できる。
- *  	なぜ、多層ニューラルネットワークが非線形問題を解くことができるのか。
- * 			→　できる
- *  
- *  	１．ユニットを増やすことでより複雑な関数を揚言する能力を持てるようになったから
- *  	２．モデルが非線形問題も解くことができるようになるための鍵は、
- * 	 		バックプロパゲーションアルゴリズム。
- *  		出力の誤差をネットワーク全体に逆伝播することで、
- *  		各反復でモデルがトレーニングデータに適合するよう更新され、
- *  		最終的にデータの関数に近似するよう最適化される。
- * 
- */
 
 		/**
 		 * １．ニューラルネットワーク 
@@ -188,7 +203,9 @@ public class DeepLearning {
 //		lrXOR.buildLogisticRegressionModel();
 //		lrXOR.print();
 		/**
-		 * 多層パーセプトロン（多層ニューラルネットワーク）
+		 * 多層パーセプトロン（多層ニューラルネットワーク） 
+		 * 入出力(ロジスティック回帰モデル）と隠れ層
+		 * 
 		 * 単層ニューラルネットワークには大きな問題があった。
 		 * 線形分離できる問題には効率的なパーセプトロンやロジスティック回帰であるが、
 		 * 非線形問題を全く解くことができないのである。
@@ -319,23 +336,2285 @@ public class DeepLearning {
   *
   * 
   * ディープラーニングのアルゴリズム
-  * 		
   *  １．ディープビリーフネット
   *  	プレトレーニング (制約つきボルツマンマシン）
+  *  	ファインチューニング 
+  *  ２．デノイジング・オートエンコーダ
+  *  	プレトレーニング（デノイジング・オートエンコーダ）
   *  	ファインチューニング
-  *  ２．積層デノイジング・オートエンコーダ
-  *  	プレトレーニング
+  *  ３．積層デノイジング・オートエンコーダ
+  *  	プレトレーニング（積層デノイジング・オートエンコーダ）
   *  	ファインチューニング
-  *
-  *  制約つきボルツマンマシン
-  *  他の全てのユニットと結合したネットワーク
-  * 
+  *  ４．ドロップアウト (ReLU ソフトプラス関数)
+  *  ５．畳み込みニューラルネットワーク（高次元ニューラルネットワーク）
+  *  	畳み込み
+  *  	プーリング
+  *  
   */
-        RestrictedBoltzmannMachines RBM = new RestrictedBoltzmannMachines();
-        RBM.setDataSet();
-        RBM.buildBoltzmannMachinesModel();
-        RBM.evaluate();
+		/**
+		 * 		ディープビリーフネット
+		 *		プレトレーニング（制約つきボルツマンマシン）
+		 */
+//        RestrictedBoltzmannMachines RBM = new RestrictedBoltzmannMachines();
+//        RBM.setDataSet();
+//        RBM.buildBoltzmannMachinesModel();
+//        RBM.evaluate();
+		/**
+		 * 		ディープビリーフネット
+		 * 		ファインチューニング（ロジスティック回帰モデル）
+		 * 			デモデータでは、入力層のユニット数は60、隠れ層は2層。
+		 * 			どちらの隠れ層もユニット数は20，出力層のユニット数は3になっている。
+		 * 
+		 *  制約つきボルツマンマシン
+		 *  他の全てのユニットと結合したネットワーク
+		 */
+//		DeepBeliefNets DBN = new DeepBeliefNets();
+//        DBN.setDataSet();
+//        DBN.buildDeepBeleifNetsModel();
+//        DBN.evaluate();
+        /**
+         * 	
+		 *  	デノイジング・オートエンコーダ
+		 *  		プレトレーニング（デノイジング・オートエンコーダ）
+		 * 			ファインチューニング（ロジスティック回帰モデル）
+		 * 
+		 * 		デノイジング・オートエンコーダ
+		 *  		プレトレーニングの特徴である出力値が入力値と同じになるように学習するという部分がより強調された手法
+		 *  	
+		 *  	「入力データに意図的にノイズを加えてデータの一部を損傷させてしまう。
+		 *  	その損傷したデータを元の入力データに復元するように、デノイジング・オートエンコーダは学習する。」
+         */
+//		DenoisingAutoencoders DA = new DenoisingAutoencoders();
+//		DA.setDataSet();
+//		DA.buildDenoisingAutoencodersModel();
+//		DA.evaluate();
+		/**
+		 *  	積層デノイジング・オートエンコーダ
+		 *  		プレトレーニング（積層デノイジング・オートエンコーダ）
+		 * 			ファインチューニング（ロジスティック回帰モデル）
+		 * 
+		 * 		※積層デノイジング・オートエンコーダ
+		 * 			デノイジング・オートエンコーダの層を積み重ねたディープニューラルネットワーク
+		 *  	
+		 */
+//		StackedDenoisingAutoencoders SDA = new StackedDenoisingAutoencoders();
+//		SDA.setDataSet();
+//		SDA.buildStackedDenoisingAutoencodersModel();
+//		SDA.evaluate();
+		/**
+		 * ドロップアウト
+		 *  
+		 * 単純に多くの層を積み重ねたニューラルネットークでは、途中まで補足できていた出力誤差が
+		 * 徐々に消えて行ってしまうという問題（勾配消失問題）が生じるため良い精度が出なかった。
+		 * 
+		 * この問題を防ぐため、プレトレーニングが必要
+		 * 
+		 * プレトレーニングにおける、レイヤーワイズトレーニングが問題を解決した。
+		 * 
+		 * レイヤーワイズトレーニング
+		 * 		ディープビリーフネット
+		 * 		積層デノイジング・オートエンコーダ
+		 * 
+		 * → プレトレーニングなしのディープラーニングアルゴリズムによって、
+		 * 		高い精度や正確性を得ることはできないのか
+		 * 
+		 * 「ネットワークが密につながってしまっていることが問題ならば、
+		 * 		無理矢理「疎」にしてしまえばよい。
+		 * 			そうすれば勾配消失問題も起こらず適切に学習できるはずだ。」
+		 * 
+		 *	デノイジングオートエンコーダ
+		 *		入力層のユニットのみに損失を加えて学習が行われる
+		 *		同じ損失データモデルが、学習で一貫して使われる
+		 *	ドロップアウト
+		 *		隠れ層のユニットにドロップアウトマスクをかける 
+		 *		各学習の反復ごとに別のドロップアウトマスクが適用させる
+		 *
+		 *	ドロップアウトマスクは、学習ループごとに異なった形のニューラルネットワークで学習が行われる。
+		 *	ReLU （ソフトプラス関数）
+		 */
+//		Dropout DO = new Dropout();
+//		DO.setDataSet();
+//		DO.buildDropoutModel();
+//		DO.evaluate();
+		/**
+		 * 畳み込みニューラルネットワーク
+		 * 現実世界を見ると、対象となるデータがいつも一次元であるとは限らない。
+		 * その最も典型的なケースは画像データ。　→畳み込みニューラルネットワーク 
+		 * 
+		 * 
+		 * 
+		 */
+		ConvolutionalNeuralNetworks CNN = new ConvolutionalNeuralNetworks();
+		CNN.setDataSet();
+		CNN.buildConvolutionalNeuralNetworksModel();
+		CNN.evaluate();
 	}
+}
+
+class ConvolutionalNeuralNetworks {
+
+//    public int[] nKernels;
+//    public int[][] kernelSizes;
+//    public int[][] poolSizes;
+//    public int nHidden;
+//    public int nOut;
+
+    public ConvolutionPoolingLayer[] convpoolLayers;
+    public int[][] convolvedSizes;
+    public int[][] pooledSizes;
+    public int flattenedSize;
+    public HiddenLayer hiddenLayer;
+    public LogisticRegression logisticLayer;
+//    public Random rng;
+
+	final Random rng ;  // seed random
+
+	//
+	// Declare variables and constants
+	//
+
+	int train_N_each ;        // for demo
+	int test_N_each ;          // for demo
+	double pNoise_Training ;  // for demo
+	double pNoise_Test ;     // for demo
+
+	int patterns ;
+
+	int train_N ;
+	int test_N ;
+
+	int[] imageSize = {12, 12};		//入力サイズ
+	int channel ;					//チャンネル数が1の画像
+
+	/**
+	 * 画像のデータは二つのcomvPoolingLayer(たたみ込みそうとマックスプーリング層）を通じて伝播される
+	 * 一つ目の層のカーネル数は１０，サイズは３ｘ３，
+	 * 二つ目の層のカーネル数は２０，サイズは２ｘ２
+	 * プーリングのサイズはともに２ｘ２
+	 */
+	int[] nKernels = {10, 20};
+	int[][] kernelSizes = { {3, 3}, {2, 2} };
+	int[][] poolSizes = { {2, 2}, {2, 2} };
+
+	/**
+	 * 二つ目のマックスプーリング層の後、特徴マップはサイズが２ｘ２，数が２０。
+	 * これらの特徴マップが一次元にならんだ８０のユニットとなり、隠れ層に伝播される。
+	 * 隠れ層のユニットは２０。
+	 */
+	int nHidden ;
+	int nOut ;
+
+	double[][][][] train_X ;
+	int[][] train_T ;
+
+	double[][][][] test_X ;
+	Integer[][] test_T ;
+	Integer[][] predicted_T ;
+
+
+	int epochs ;
+	double learningRate ;
+
+	int minibatchSize ;
+	int minibatch_N ;
+
+	double[][][][][] train_X_minibatch ;
+	int[][][] train_T_minibatch ;
+	List<Integer> minibatchIndex ;
+
+	
+	/**
+	 * コンストラクタ
+	 */
+    public ConvolutionalNeuralNetworks(){
+        rng = new Random(123);  // seed random
+        train_N_each = 50;        // for demo
+        test_N_each = 10;          // for demo
+        pNoise_Training = 0.05;  // for demo
+        pNoise_Test = 0.10;     // for demo
+        patterns = 3;
+        train_N = train_N_each * patterns;
+        test_N = test_N_each * patterns;
+//        int[] imageSize = {12, 12};		//入力サイズ
+        channel = 1;					//チャンネル数が1の画像
+        /**
+         * 画像のデータは二つのcomvPoolingLayer(たたみ込みそうとマックスプーリング層）を通じて伝播される
+         * 一つ目の層のカーネル数は１０，サイズは３ｘ３，
+         * 二つ目の層のカーネル数は２０，サイズは２ｘ２
+         * プーリングのサイズはともに２ｘ２
+         */
+//        int[] nKernels = {10, 20};
+//        int[][] kernelSizes = { {3, 3}, {2, 2} };
+//        int[][] poolSizes = { {2, 2}, {2, 2} };
+
+        /**
+         * 二つ目のマックスプーリング層の後、特徴マップはサイズが２ｘ２，数が２０。
+         * これらの特徴マップが一次元にならんだ８０のユニットとなり、隠れ層に伝播される。
+         * 隠れ層のユニットは２０。
+         */
+        nHidden = 20;
+        nOut = patterns;
+
+        train_X = new double[train_N][channel][imageSize[0]][imageSize[1]];
+        train_T = new int[train_N][nOut];
+
+        test_X = new double[test_N][channel][imageSize[0]][imageSize[1]];
+        test_T = new Integer[test_N][nOut];
+        predicted_T = new Integer[test_N][nOut];
+
+        epochs = 500;
+        learningRate = 0.1;
+
+        minibatchSize = 25;
+        minibatch_N = train_N / minibatchSize;
+
+        train_X_minibatch = new double[minibatch_N][minibatchSize][channel][imageSize[0]][imageSize[1]];
+        train_T_minibatch = new int[minibatch_N][minibatchSize][nOut];
+        minibatchIndex = new ArrayList<>();
+        for (int i = 0; i < train_N; i++) {
+        	minibatchIndex.add(i);
+        }
+        Collections.shuffle(minibatchIndex, rng);
+    }
+    /**
+     * コンストラクタ
+     */
+    public ConvolutionalNeuralNetworks (int[] imageSize, int channel, int[] nKernels, int[][] kernelSizes, int[][] poolSizes, int nHidden, int nOut, Random rng, String activation) {
+        if (rng == null) rng = new Random(1234);
+        this.nKernels = nKernels;
+        this.kernelSizes = kernelSizes;
+        this.poolSizes = poolSizes;
+        this.nHidden = nHidden;
+        this.nOut = nOut;
+        this.rng = rng;
+
+        convpoolLayers = new ConvolutionPoolingLayer[nKernels.length];
+        convolvedSizes = new int[nKernels.length][imageSize.length];
+        pooledSizes = new int[nKernels.length][imageSize.length];
+
+
+        // 畳み込み層及びプーリング層の初期化
+        for (int i = 0; i < nKernels.length; i++) {
+            int[] size_;
+            int channel_;
+
+            if (i == 0) {
+                size_ = new int[]{imageSize[0], imageSize[1]};
+                channel_ = channel;
+            } else {
+                size_ = new int[]{pooledSizes[i-1][0], pooledSizes[i-1][1]};
+                channel_ = nKernels[i-1];
+            }
+
+            //畳み込み層とプーリング層のユニットサイズをセット
+            convolvedSizes[i] = new int[]{size_[0] - kernelSizes[i][0] + 1, size_[1] - kernelSizes[i][1] + 1};
+            pooledSizes[i] = new int[]{convolvedSizes[i][0] / poolSizes[i][0], convolvedSizes[i][1] / poolSizes[i][1]};
+
+            //畳み込み層とプーリング層を構築
+            convpoolLayers[i] = new ConvolutionPoolingLayer(size_, channel_, nKernels[i], kernelSizes[i], poolSizes[i], convolvedSizes[i], pooledSizes[i], rng, activation);
+        }
+
+
+        // 多層パーセプトロン層を構築
+        flattenedSize = nKernels[nKernels.length-1] * pooledSizes[pooledSizes.length-1][0] * pooledSizes[pooledSizes.length-1][1];
+
+        // 隠れ層を構築
+        hiddenLayer = new HiddenLayer(flattenedSize, nHidden, null, null, rng, activation);
+
+        // 出力層を構築
+        logisticLayer = new LogisticRegression(nHidden, nOut);
+    }
+
+
+    public void train(double[][][][] X, int[][] T, int minibatchSize, double learningRate) {
+
+    	//畳み込み層とプーリング層の活性化前・後
+    	//ダウンサンプル前のデータをキャッシュしておく
+        List<double[][][][]> preActivated_X = new ArrayList<>(nKernels.length);
+        List<double[][][][]> activated_X = new ArrayList<>(nKernels.length);
+        // +1は元データ保持のため
+        List<double[][][][]> downsampled_X = new ArrayList<>(nKernels.length+1);
+        downsampled_X.add(X);
+
+        for (int i = 0; i < nKernels.length; i++) {
+            preActivated_X.add(new double[minibatchSize][nKernels[i]][convolvedSizes[i][0]][convolvedSizes[i][1]]);
+            activated_X.add(new double[minibatchSize][nKernels[i]][convolvedSizes[i][0]][convolvedSizes[i][1]]);
+            downsampled_X.add(new double[minibatchSize][nKernels[i]][convolvedSizes[i][0]][convolvedSizes[i][1]]);
+        }
+
+        //畳み込み層とプーリング層で順伝播を行う
+        double[][] flattened_X = new double[minibatchSize][flattenedSize];  
+
+        double[][] Z = new double[minibatchSize][nHidden]; 
+
+        double[][] dY;  // 出力層のdelta
+        double[][] dZ;  // 隠れ層のdelta
+        double[][] dX_flatten = new double[minibatchSize][flattenedSize];  //入力層のdelta
+        double[][][][] dX = new double[minibatchSize][nKernels[nKernels.length-1]][pooledSizes[pooledSizes.length-1][0]][pooledSizes[pooledSizes.length-1][1]];
+
+        double[][][][] dC;
+
+
+        // ミニバッチでトレーニング
+        for (int n = 0; n < minibatchSize; n++) {
+
+        	//畳み込み層とプーリング層から伝播させる
+            double[][][] z_ = X[n].clone();
+            for (int i = 0; i < nKernels.length; i++) {
+                z_ = convpoolLayers[i].forward(z_, preActivated_X.get(i)[n], activated_X.get(i)[n]);
+                downsampled_X.get(i+1)[n] = z_.clone();
+            }
+
+            // 多層パーセプトロンに入力するため1次元のデータにする
+            double[] x_ = this.flatten(z_);
+            flattened_X[n] = x_.clone();
+
+            //隠れ層の順伝播
+            Z[n] = hiddenLayer.forward(x_);
+
+        }
+
+
+        // 出力層の順伝播および逆伝播
+        dY = logisticLayer.train(Z, T, minibatchSize, learningRate);
+
+        //隠れ層の逆伝播
+        dZ = hiddenLayer.backward(flattened_X, Z, dY, logisticLayer.W, minibatchSize, learningRate);
+
+        //入力層へデルタを逆伝播させる
+        for (int n = 0; n < minibatchSize; n++) {
+            for (int i = 0; i < flattenedSize; i++) {
+                for (int j = 0; j < nHidden; j++) {
+                    dX_flatten[n][i] += hiddenLayer.W[j][i] * dZ[n][j];
+                }
+            }
+
+            //2次元のデルタのデータに変換
+            dX[n] = unflatten(dX_flatten[n]); 
+        }
+
+        //畳み込み層とプーリング層から逆伝播させる
+        dC = dX.clone();
+        for (int i = nKernels.length-1; i >= 0; i--) {
+            dC = convpoolLayers[i].backward(downsampled_X.get(i), preActivated_X.get(i), activated_X.get(i), downsampled_X.get(i+1), dC, minibatchSize, learningRate);
+        }
+
+    }
+
+
+    public double[] flatten(double[][][] z) {
+
+        double[] x = new double[flattenedSize];
+
+        int index = 0;
+        for (int k = 0; k < nKernels[nKernels.length-1]; k++) {
+            for (int i = 0; i < pooledSizes[pooledSizes.length-1][0]; i++) {
+                for (int j = 0; j < pooledSizes[pooledSizes.length-1][1]; j++) {
+                    x[index] = z[k][i][j];
+                    index += 1;
+                }
+            }
+        }
+
+        return x;
+    }
+
+    public double[][][] unflatten(double[] x) {
+
+        double[][][] z = new double[nKernels[nKernels.length-1]][pooledSizes[pooledSizes.length-1][0]][pooledSizes[pooledSizes.length-1][1]];
+
+        int index = 0;
+        for (int k = 0; k < z.length; k++) {
+            for (int i = 0; i < z[0].length; i++) {
+                for (int j = 0; j < z[0][0].length; j++) {
+                    z[k][i][j] = x[index];
+                    index += 1;
+                }
+            }
+        }
+
+        return z;
+    }
+
+    /**
+     * 
+     */
+    public Integer[] predict(double[][][] x) {
+
+        List<double[][][]> preActivated = new ArrayList<>(nKernels.length);
+        List<double[][][]> activated = new ArrayList<>(nKernels.length);
+
+        for (int i = 0; i < nKernels.length; i++) {
+            preActivated.add(new double[nKernels[i]][convolvedSizes[i][0]][convolvedSizes[i][1]]);
+            activated.add(new double[nKernels[i]][convolvedSizes[i][0]][convolvedSizes[i][1]]);
+        }
+
+        //畳み込み層とプーリング層を順伝播させる
+        double[][][] z = x.clone();
+        for (int i = 0; i < nKernels.length; i++) {
+            z = convpoolLayers[i].forward(z, preActivated.get(i), activated.get(i));
+        }
+        //多層パーセプトロンを順伝播させる
+        return logisticLayer.predict(hiddenLayer.forward(this.flatten(z)));
+    }
+
+    public void setDataSet(){
+    	
+        //
+        // Create training data and test data for demo.
+        //
+        for (int pattern = 0; pattern < patterns; pattern++) {
+
+            for (int n = 0; n < train_N_each; n++) {
+
+                int n_ = pattern * train_N_each + n;
+
+                for (int c = 0; c < channel; c++) {
+
+                    for (int i = 0; i < imageSize[0]; i++) {
+
+                        for (int j = 0; j < imageSize[1]; j++) {
+
+                            if ((i < (pattern + 1) * (imageSize[0] / patterns)) && (i >= pattern * imageSize[0] / patterns)) {
+                                train_X[n_][c][i][j] = ((int) 128. * rng.nextDouble() + 128.) * RandomGenerator.binomial(1, 1 - pNoise_Training, rng) / 256.;
+                            } else {
+                                train_X[n_][c][i][j] = 128. * RandomGenerator.binomial(1, pNoise_Training, rng) / 256.;
+                            }
+                        }
+                    }
+                }
+
+                for (int i = 0; i < nOut; i++) {
+                    if (i == pattern) {
+                        train_T[n_][i] = 1;
+                    } else {
+                        train_T[n_][i] = 0;
+                    }
+                }
+            }
+
+            for (int n = 0; n < test_N_each; n++) {
+
+                int n_ = pattern * test_N_each + n;
+
+                for (int c = 0; c < channel; c++) {
+
+                    for (int i = 0; i < imageSize[0]; i++) {
+
+                        for (int j = 0; j < imageSize[1]; j++) {
+
+                            if ((i < (pattern + 1) * imageSize[0] / patterns) && (i >= pattern * imageSize[0] / patterns)) {
+                                test_X[n_][c][i][j] = ((int) 128. * rng.nextDouble() + 128.) * RandomGenerator.binomial(1, 1 - pNoise_Test, rng) / 256.;
+                            } else {
+                                test_X[n_][c][i][j] = 128. * RandomGenerator.binomial(1, pNoise_Test, rng) / 256.;
+                            }
+                        }
+                    }
+                }
+
+                for (int i = 0; i < nOut; i++) {
+                    if (i == pattern) {
+                        test_T[n_][i] = 1;
+                    } else {
+                        test_T[n_][i] = 0;
+                    }
+                }
+            }
+        }
+
+
+        // create minibatches
+        for (int j = 0; j < minibatchSize; j++) {
+            for (int i = 0; i < minibatch_N; i++) {
+                train_X_minibatch[i][j] = train_X[minibatchIndex.get(i * minibatchSize + j)];
+                train_T_minibatch[i][j] = train_T[minibatchIndex.get(i * minibatchSize + j)];
+            }
+        }
+
+
+    }
+    public void buildConvolutionalNeuralNetworksModel(){
+    	
+        //
+        // Build Convolutional Neural Networks model
+        //
+
+        // construct CNN
+        System.out.print("Building the model...");
+        ConvolutionalNeuralNetworks classifier = new ConvolutionalNeuralNetworks(imageSize, channel, nKernels, kernelSizes, poolSizes, nHidden, nOut, rng, "ReLU");
+        System.out.println("done.");
+
+
+        // train the model
+        System.out.print("Training the model...");
+        System.out.println();
+
+        for (int epoch = 0; epoch < epochs; epoch++) {
+
+            if ((epoch + 1) % 50 == 0) {
+                System.out.println("\titer = " + (epoch + 1) + " / " + epochs);
+            }
+
+            for (int batch = 0; batch < minibatch_N; batch++) {
+                classifier.train(train_X_minibatch[batch], train_T_minibatch[batch], minibatchSize, learningRate);
+            }
+            learningRate *= 0.999;
+        }
+        System.out.println("done.");
+
+
+        // test
+        for (int i = 0; i < test_N; i++) {
+            predicted_T[i] = classifier.predict(test_X[i]);
+        }
+
+
+    }
+    public void evaluate(){
+    	
+        //
+        // Evaluate the model
+        //
+
+        int[][] confusionMatrix = new int[patterns][patterns];
+        double accuracy = 0.;
+        double[] precision = new double[patterns];
+        double[] recall = new double[patterns];
+
+        for (int i = 0; i < test_N; i++) {
+            int predicted_ = Arrays.asList(predicted_T[i]).indexOf(1);
+            int actual_ = Arrays.asList(test_T[i]).indexOf(1);
+
+            confusionMatrix[actual_][predicted_] += 1;
+        }
+
+        for (int i = 0; i < patterns; i++) {
+            double col_ = 0.;
+            double row_ = 0.;
+
+            for (int j = 0; j < patterns; j++) {
+
+                if (i == j) {
+                    accuracy += confusionMatrix[i][j];
+                    precision[i] += confusionMatrix[j][i];
+                    recall[i] += confusionMatrix[i][j];
+                }
+
+                col_ += confusionMatrix[j][i];
+                row_ += confusionMatrix[i][j];
+            }
+            precision[i] /= col_;
+            recall[i] /= row_;
+        }
+
+        accuracy /= test_N;
+
+        System.out.println("--------------------");
+        System.out.println("CNN model evaluation");
+        System.out.println("--------------------");
+        System.out.printf("Accuracy: %.1f %%\n", accuracy * 100);
+        System.out.println("Precision:");
+        for (int i = 0; i < patterns; i++) {
+            System.out.printf(" class %d: %.1f %%\n", i+1, precision[i] * 100);
+        }
+        System.out.println("Recall:");
+        for (int i = 0; i < patterns; i++) {
+            System.out.printf(" class %d: %.1f %%\n", i+1, recall[i] * 100);
+        }
+
+    }
+}
+
+class ConvolutionPoolingLayer {
+
+    public int[] imageSize;
+    public int channel;
+    public int nKernel;
+    public int[] kernelSize;
+    public int[] poolSize;
+    public int[] convolvedSize;
+    public int[] pooledSize;
+    public double[][][][] W;
+    public double[] b;
+    public Random rng;
+    public DoubleFunction<Double> activation;
+    public DoubleFunction<Double> dactivation;
+
+
+    public ConvolutionPoolingLayer(int[] imageSize, int channel, int nKernel, int[] kernelSize, int[] poolSize, int[] convolvedSize, int[] pooledSize, Random rng, String activation) {
+        if (rng == null) rng = new Random(1234);
+        if (W == null) {
+        	//重みWとしてdouble型の4次元配列を生成
+            W = new double[nKernel][channel][kernelSize[0]][kernelSize[1]];
+            double in_ = channel * kernelSize[0] * kernelSize[1];
+            double out_ = nKernel * kernelSize[0] * kernelSize[1] / (poolSize[0] * poolSize[1]);
+            double w_ = Math.sqrt(6. / (in_ + out_));
+            for (int k = 0; k < nKernel; k++) {
+                for (int c = 0; c < channel; c++) {
+                    for (int s = 0; s < kernelSize[0]; s++) {
+                        for (int t = 0; t < kernelSize[1]; t++) {
+                            W[k][c][s][t] = RandomGenerator.uniform(-w_, w_, rng);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (b == null) b = new double[nKernel];
+
+
+        this.imageSize = imageSize;
+        this.channel = channel;
+        this.nKernel = nKernel;
+        this.kernelSize = kernelSize;
+        this.poolSize = poolSize;
+        this.convolvedSize = convolvedSize;
+        this.pooledSize = pooledSize;
+        this.rng = rng;
+
+        if (activation == "sigmoid" || activation == null) {
+
+            this.activation = (double x) -> ActivationFunction.sigmoid(x);
+            this.dactivation = (double x) -> ActivationFunction.dsigmoid(x);
+
+        } else if (activation == "tanh") {
+
+            this.activation = (double x) -> ActivationFunction.tanh(x);
+            this.dactivation = (double x) -> ActivationFunction.dtanh(x);
+
+        } else if (activation == "ReLU") {
+
+            this.activation = (double x) -> ActivationFunction.ReLU(x);
+            this.dactivation = (double x) -> ActivationFunction.dReLU(x);
+
+        } else {
+            throw new IllegalArgumentException("activation function not supported");
+        }
+
+    }
+
+    /**
+     * forwardメソッド
+     * convlveメソッドは畳み込み
+     * downsampleメソッドはマックスプーリングを行う
+     */
+    public double[][][] forward(double[][][] x, double[][][] preActivated_X, double[][][] activated_X) {
+        double[][][] z = this.convolve(x, preActivated_X, activated_X);
+        return  this.downsample(z);
+
+    }
+
+
+    public double[][][][] backward(double[][][][] X, double[][][][] preActivated_X, double[][][][] activated_X, double[][][][] downsampled_X, double[][][][] dY, int minibatchSize, double learningRate) {
+
+        double[][][][] dZ = this.upsample(activated_X, downsampled_X, dY, minibatchSize);
+        return this.deconvolve(X, preActivated_X, dZ, minibatchSize, learningRate);
+
+    }
+
+
+
+    public double[][][] convolve(double[][][] x, double[][][] preActivated_X, double[][][] activated_X) {
+
+        double[][][] y = new double[nKernel][convolvedSize[0]][convolvedSize[1]];
+
+        for (int k = 0; k < nKernel; k++) {
+            for (int i = 0; i < convolvedSize[0]; i++) {
+                for(int j = 0; j < convolvedSize[1]; j++) {
+
+                    double convolved_ = 0.;
+
+                    for (int c = 0; c < channel; c++) {
+                        for (int s = 0; s < kernelSize[0]; s++) {
+                            for (int t = 0; t < kernelSize[1]; t++) {
+                                convolved_ += W[k][c][s][t] * x[c][i+s][j+t];
+                            }
+                        }
+                    }
+
+                    //活性化前の値をキャッシュ
+                    preActivated_X[k][i][j] = convolved_ + b[k];
+                    activated_X[k][i][j] = this.activation.apply(preActivated_X[k][i][j]);
+                    y[k][i][j] = activated_X[k][i][j];
+                }
+            }
+        }
+
+        return y;
+    }
+
+    public double[][][][] deconvolve(double[][][][] X, double[][][][] Y, double[][][][] dY, int minibatchSize, double learningRate) {
+
+        double[][][][] grad_W = new double[nKernel][channel][kernelSize[0]][kernelSize[1]];
+        double[] grad_b = new double[nKernel];
+
+        double[][][][] dX = new double[minibatchSize][channel][imageSize[0]][imageSize[1]];
+
+        // 重みWとバイアスbの勾配を計算
+        for (int n = 0; n < minibatchSize; n++) {
+            for (int k = 0; k < nKernel; k++) {
+
+                for (int i = 0; i < convolvedSize[0]; i++) {
+                    for (int j = 0; j < convolvedSize[1]; j++) {
+
+                        double d_ = dY[n][k][i][j] * this.dactivation.apply(Y[n][k][i][j]);
+                        //バイアスbの勾配：式４．３．９に対応
+                        grad_b[k] += d_;
+
+                        for (int c = 0; c < channel; c++) {
+                            for (int s = 0; s < kernelSize[0]; s++) {
+                                for (int t = 0; t < kernelSize[1]; t++) {
+                                	//重みWの勾配：式４．３．１０に対応
+                                    grad_W[k][c][s][t] += d_ * X[n][c][i+s][j+t];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //勾配を更新
+        for (int k = 0; k < nKernel; k++) {
+            b[k] -= learningRate * grad_b[k] / minibatchSize;
+            for (int c = 0; c < channel; c++) {
+                for (int s = 0; s < kernelSize[0]; s++) {
+                    for(int t = 0; t < kernelSize[1]; t++) {
+                        W[k][c][s][t] -= learningRate * grad_W[k][c][s][t] / minibatchSize;
+                    }
+                }
+            }
+        }
+
+        //デルタを計算
+        for (int n = 0; n < minibatchSize; n++) {
+            for (int c = 0; c < channel; c++) {
+                for (int i = 0; i < imageSize[0]; i++) {
+                    for (int j = 0; j < imageSize[1]; j++) {
+                        for (int k = 0; k < nKernel; k++) {
+                            for (int s = 0; s < kernelSize[0]; s++) {
+                                for (int t = 0; t < kernelSize[1]; t++) {
+                                    double d_ = 0.;
+                                    if (i - (kernelSize[0] - 1) - s >= 0 && j - (kernelSize[1] - 1) - t >= 0) {
+                                    	//誤差を計算：式４．３．１３に対応
+                                        d_ = dY[n][k][i-(kernelSize[0]-1)-s][j-(kernelSize[1]-1)-t] * this.dactivation.apply(Y[n][k][i-(kernelSize[0]-1)-s][j-(kernelSize[1]-1)-t]) * W[k][c][s][t];
+                                    }
+                                    dX[n][c][i][j] += d_;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return dX;
+    }
+
+
+    /**
+     * 
+     */
+    public double[][][] downsample(double[][][] x) {
+
+        double[][][] y = new double[nKernel][pooledSize[0]][pooledSize[1]];
+
+        for (int k = 0; k < nKernel; k++) {
+            for (int i = 0; i < pooledSize[0]; i++) {
+                for (int j = 0; j < pooledSize[1]; j++) {
+
+                    double max_ = 0.;
+
+                    for (int s = 0; s < poolSize[0]; s++) {
+                        for (int t = 0; t < poolSize[1]; t++) {
+
+                            if (s == 0 && t == 0) {
+                                max_ = x[k][poolSize[0]*i][poolSize[1]*j];
+                                continue;
+                            }
+                            if (max_ < x[k][poolSize[0]*i+s][poolSize[1]*j+t]) {
+                                max_ = x[k][poolSize[0]*i+s][poolSize[1]*j+t];
+                            }
+                        }
+                    }
+                    //式 4.3.4に対応
+                    y[k][i][j] = max_;
+                }
+            }
+        }
+
+        return y;
+    }
+
+    public double[][][][] upsample(double[][][][] X, double[][][][] Y, double[][][][] dY, int minibatchSize) {
+
+        double[][][][] dX = new double[minibatchSize][nKernel][convolvedSize[0]][convolvedSize[1]];
+
+        for (int n = 0; n < minibatchSize; n++) {
+
+            for (int k = 0; k < nKernel; k++) {
+                for (int i = 0; i < pooledSize[0]; i++) {
+                    for (int j = 0; j < pooledSize[1]; j++) {
+
+                        for (int s = 0; s < poolSize[0]; s++) {
+                            for (int t = 0; t < poolSize[1]; t++) {
+
+                                double d_ = 0.;
+
+                                if (Y[n][k][i][j] == X[n][k][poolSize[0]*i+s][poolSize[1]*j+t]) {
+                                    d_ = dY[n][k][i][j];
+                                }
+
+                                //式４．３．５に対応
+                                dX[n][k][poolSize[0]*i+s][poolSize[1]*j+t] = d_;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return dX;
+    }
+
+}
+class Dropout {
+    public int nLayers;
+    public HiddenLayer[] hiddenLayers;
+    public LogisticRegression logisticLayer;
+	Random rng ;
+	int train_N_each ;        // for demo
+	int test_N_each ;          // for demo
+	int nIn_each ;             // for demo
+	double pNoise_Training ;  // for demo
+	double pNoise_Test ;     // for demo
+	int patterns ;
+	int train_N ;
+	int test_N ;
+	int nIn ;
+	int nOut ;
+	int[] hiddenLayerSizes = {100, 80};	//二つの隠れ層を持つニューラルネットワークを構築
+	double pDropout ;
+	double[][] train_X ;
+	int[][] train_T ;
+	double[][] test_X ;
+	Integer[][] test_T ;
+	Integer[][] predicted_T ;
+	int epochs ;
+	double learningRate ;
+	int minibatchSize ;
+	int minibatch_N ;
+	double[][][] train_X_minibatch ;
+	int[][][] train_T_minibatch ;
+	List<Integer> minibatchIndex ;
+	/**
+	 * コンストラクタ
+	 */
+    public Dropout(){
+        rng = new Random(123);
+        train_N_each = 300;        
+        test_N_each = 50;          
+        nIn_each = 20;             
+        pNoise_Training = 0.2;  
+        pNoise_Test = 0.25;     
+        patterns = 3;
+        train_N = train_N_each * patterns;
+        test_N = test_N_each * patterns;
+        nIn = nIn_each * patterns;
+        nOut = patterns;
+        pDropout = 0.5;						// ドロップアウトの確率
+        train_X = new double[train_N][nIn];
+        train_T = new int[train_N][nOut];
+        test_X = new double[test_N][nIn];
+        test_T = new Integer[test_N][nOut];
+        predicted_T = new Integer[test_N][nOut];
+        epochs = 5000;
+        learningRate = 0.2;
+        minibatchSize = 50;
+        minibatch_N = train_N / minibatchSize;
+        train_X_minibatch = new double[minibatch_N][minibatchSize][nIn];
+        train_T_minibatch = new int[minibatch_N][minibatchSize][nOut];
+        minibatchIndex = new ArrayList<>();
+        for (int i = 0; i < train_N; i++) {
+        	minibatchIndex.add(i);
+        }
+        Collections.shuffle(minibatchIndex, rng);
+    }
+    /**
+     * コンストラクタ 
+     */
+    public Dropout(int nIn, int[] hiddenLayerSizes, int nOut, Random rng, String activation) {
+        if (rng == null) rng = new Random(1234);		//シード用乱数を生成
+        this.rng = rng;									//
+        if (activation == null) activation = "ReLU";	//活性化関数としてReLUを指定
+        this.nIn = nIn;									//出力層のユニット
+        this.hiddenLayerSizes = hiddenLayerSizes;		//隠れ層を格納する配列
+        this.nOut = nOut;
+        this.nLayers = hiddenLayerSizes.length;
+        this.hiddenLayers = new HiddenLayer[nLayers];
+        // モデルの構築
+        for (int i = 0; i < nLayers; i++) {
+            int nIn_;
+            if (i == 0) nIn_ = nIn;
+            else nIn_ = hiddenLayerSizes[i - 1];
+            // 隠れ層の構築
+            hiddenLayers[i] = new HiddenLayer(nIn_, hiddenLayerSizes[i], null, null, rng, activation);
+        }
+        // 出力層ロジスティックレイヤーの構築
+        logisticLayer = new LogisticRegression(hiddenLayerSizes[nLayers - 1], nOut);
+    }
+    /**
+     * トレーニング
+     * 学習を終えたら次はテストのフェーズとなるが、実はドロップアウトマスクをそのままテストデータに適用することはできない。
+     * テストの前に学習済みのネットワークの重みを調整する必要がある。
+     * ドロップあるとマスクをかけるとネットワークの構造が変わる。これにより、
+     * あるユニットが、特定の特徴の活性に対して大きなウェイトを占めていた場合、
+     * そのユニットがドロップアウトしてしまうと期待した結果が得られない可能性があるから。
+     * その問題を防ぐために、次のpretest関数で、
+     * ネットワークの重みをならす、すなわちネットワーク全体に対して均一に
+     * ドロップアウトマスクがかけられた状態を再現するようにする。
+     */
+    public void train(double[][] X, int[][] T, int minibatchSize, double learningRate, double pDrouput) {
+    	//各入力値を保持するためのlayerInputs変数
+        List<double[][]> layerInputs = new ArrayList<>(nLayers+1);
+        //Xはトレーニングデータ
+        layerInputs.add(X);
+        //入力値に加え、逆伝播における各層のドロップアウトマスクの値も保持しておく
+        List<int[][]> dropoutMasks = new ArrayList<>(nLayers);
+        double[][] Z = new double[0][0];
+        double[][] D; // delta
+        // 学習　隠れ層の順伝播
+        // 活性化関数を通した値とドロップアウトマスクの値は単純に掛け合わせているだけ
+        for (int layer = 0; layer < nLayers; layer++) {
+            double[] x_;  // 層への入力
+            double[][] Z_ = new double[minibatchSize][hiddenLayerSizes[layer]];
+            int[][] mask_ = new int[minibatchSize][hiddenLayerSizes[layer]];
+            for (int n = 0; n < minibatchSize; n++) {
+                if (layer == 0) {
+                    x_ = X[n];
+                } else {
+                    x_ = Z[n];
+                }
+                //隠れ層から順伝播し、次の層への入力を得る
+                Z_[n] = hiddenLayers[layer].forward(x_);
+                mask_[n] = dropout(Z_[n], pDrouput);  // 次の層への入力にドロップアウトマスクを適用
+            }
+            Z = Z_;
+            //層への入力値を保持
+            layerInputs.add(Z.clone());
+            // ドロップアウトマスクの値を保持
+            dropoutMasks.add(mask_);
+        }
+        // 出力層での順伝播と逆伝播
+        // トレーニングデータh隠れ層を通って順伝播され、出力層ではロジスティック回帰により順伝播されて出力値を得る
+        // その後は、他の一般的なニューラルネットワークアルゴリズム同様、各層の誤差がネットワークを通じて逆伝播していく
+        D = logisticLayer.train(Z, T, minibatchSize, learningRate);
+        //隠れ層の逆伝播
+        for (int layer = nLayers - 1; layer >= 0; layer--) {
+            double[][] Wprev_;
+            if (layer == nLayers - 1) {
+            	//出力層の重みを格納
+                Wprev_ = logisticLayer.W;
+            } else {
+            	//隠れ層の重みを格納
+                Wprev_ = hiddenLayers[layer+1].W;
+            }
+            // deltaにもマスクを適用
+            for (int n = 0; n < minibatchSize; n++) {
+            	//各層のドロップアウトマスクの値を取得
+                int[] mask_ = dropoutMasks.get(layer)[n];
+                for (int j = 0; j < D[n].length; j++) {
+                	//デルタの値にドロップアウトマスクを適用
+                    D[n][j] *= mask_[j];
+                }
+            }
+            //隠れ層から次の層へ逆伝播
+            D = hiddenLayers[layer].backward(layerInputs.get(layer), layerInputs.get(layer+1), D, Wprev_, minibatchSize, learningRate);
+        }
+    }
+    /**
+     * ドロップアウト関数
+     * ドロップアウトはbinomialメソッドによりベルヌーイ分布に従った値を返す
+     */
+    public int[] dropout(double[] z, double p) {
+        int size = z.length;
+        int[] mask = new int[size];
+        for (int i = 0; i < size; i++) {
+            mask[i] = RandomGenerator.binomial(1, 1 - p, rng);
+            z[i] *= mask[i]; // ドロップアウトマスクを適用
+        }
+        return mask;
+    }
+    /**
+     * プレテスト
+     * 全ての重みに対してドロップアウトしない確率を重みにかけることで、
+     * テスト用のネットワークの重みに調整される。
+     * この手法はテスト前に一度だけ必要となる。
+     * ネットワークのモデル自体は、一般的な多層ニューラルネットワークの形をしているため、
+     * 予測を行うにはネットワーク内を順伝播させるだけでよい。
+     */
+    public void pretest(double pDropout) {
+    	//隠れ層間で順に伝播させる
+        for (int layer = 0; layer < nLayers; layer++) {
+            int nIn_, nOut_;
+            //層の入力ユニット数
+            if (layer == 0) {
+                nIn_ = nIn;
+            } else {
+                nIn_ = hiddenLayerSizes[layer];
+            }
+            //層の出力ユニット数
+            if (layer == nLayers - 1) {
+                nOut_ = nOut;
+            } else {
+                nOut_ = hiddenLayerSizes[layer+1];
+            }
+            for (int j = 0; j < nOut_; j++) {
+                for (int i = 0; i < nIn_; i++) {
+                	//ネットワークの重みをならす
+                    hiddenLayers[layer].W[j][i] *= 1 - pDropout;
+                }
+            }
+        }
+    }
+    /**
+     * 予測メソッド
+     * 学習されたモデルを使って入力データを予測する
+     * ネットワークを通じて入力を活性化
+     */
+    public Integer[] predict(double[] x) {
+        double[] z = new double[0];
+        for (int layer = 0; layer < nLayers; layer++) {
+            double[] x_;
+            if (layer == 0) {
+                x_ = x;
+            } else {
+                x_ = z.clone();
+            }
+            //隠れ層を順伝播させる
+            z = hiddenLayers[layer].forward(x_);
+        }
+        //ロジスティック回帰モデルレイヤー 
+        //モデルの予測値を返す
+        return logisticLayer.predict(z);
+    }
+    /**
+     * データセットのセット
+     */
+    public void setDataSet(){
+        for (int pattern = 0; pattern < patterns; pattern++) {
+        	//トレーニングデータのセット
+            for (int n = 0; n < train_N_each; n++) {
+                int n_ = pattern * train_N_each + n;
+                for (int i = 0; i < nIn; i++) {
+                    if ( (n_ >= train_N_each * pattern && n_ < train_N_each * (pattern + 1) ) &&
+                            (i >= nIn_each * pattern && i < nIn_each * (pattern + 1)) ) {
+                        train_X[n_][i] = RandomGenerator.binomial(1, 1 - pNoise_Training, rng) * rng.nextDouble() * .5 + .5;
+                    } else {
+                        train_X[n_][i] = RandomGenerator.binomial(1, pNoise_Training, rng) * rng.nextDouble() * .5 + .5;
+                    }
+                }
+                for (int i = 0; i < nOut; i++) {
+                    if (i == pattern) {
+                        train_T[n_][i] = 1;
+                    } else {
+                        train_T[n_][i] = 0;
+                    }
+                }
+            }
+            //テストデータのセット
+            for (int n = 0; n < test_N_each; n++) {
+                int n_ = pattern * test_N_each + n;
+                for (int i = 0; i < nIn; i++) {
+                    if ( (n_ >= test_N_each * pattern && n_ < test_N_each * (pattern + 1) ) &&
+                            (i >= nIn_each * pattern && i < nIn_each * (pattern + 1)) ) {
+                        test_X[n_][i] = (double) RandomGenerator.binomial(1, 1 - pNoise_Test, rng) * rng.nextDouble() * .5 + .5;
+                    } else {
+                        test_X[n_][i] = (double) RandomGenerator.binomial(1, pNoise_Test, rng) * rng.nextDouble() * .5 + .5;
+                    }
+                }
+                for (int i = 0; i < nOut; i++) {
+                    if (i == pattern) {
+                        test_T[n_][i] = 1;
+                    } else {
+                        test_T[n_][i] = 0;
+                    }
+                }
+            }
+        }
+        /**
+         * ミニバッチの生成
+		 * データセットの中から部分的にいくつかのデータを選び取って、 
+		 * それらのデータに対してだけ和を計算して勾配を求めパラメータを更新する。
+		 * これを確率的勾配降下法という。 
+		 * このとき1回の更新に用いられるデータセットの部分集合のことをミニバッチという。
+         */
+        for (int j = 0; j < minibatchSize; j++) {
+            for (int i = 0; i < minibatch_N; i++) {
+                train_X_minibatch[i][j] = train_X[minibatchIndex.get(i * minibatchSize + j)];
+                train_T_minibatch[i][j] = train_T[minibatchIndex.get(i * minibatchSize + j)];
+            }
+        }
+    }
+    /**
+     * ドロップアウトモデルの構築
+     */
+    public void buildDropoutModel(){
+        //ドロップアウトモデルの構築
+        System.out.print("モデルを構築しています...");
+        Dropout classifier = new Dropout(nIn, hiddenLayerSizes, nOut, rng, "ReLU");
+        System.out.println("完了.");
+        // モデルのトレーニング
+        System.out.print("モデルをトレーニングしています...");
+        for (int epoch = 0; epoch < epochs; epoch++) {
+            for (int batch = 0; batch < minibatch_N; batch++) {
+            	/**
+            	 * プレトレーニングで使ったトレーニングデータを用いることはしない
+            	 * すべてのデータセットをプレトレーニングとファインチューニングに用いてしまうと、
+            	 * 過学習に陥りやすくなる。そのため、トレーニングデータセットとは別に
+            	 * バリデーション（検証用）データセットを用意し、これをファインチューニングに用いる。
+            	 */
+                classifier.train(train_X_minibatch[batch], train_T_minibatch[batch], minibatchSize, learningRate, pDropout);
+            }
+            //モデルが収束されるように学習率は徐々に減少
+            learningRate *= 0.999;
+        }
+        System.out.println("完了.");
+        //テストのための重み付けを調整
+        System.out.print("テスト前の重み付けを最適化しています...");
+        classifier.pretest(pDropout);
+        System.out.println("完了.");
+        //テスト
+        for (int i = 0; i < test_N; i++) {
+        	//テストデータの分類結果を配列に格納
+            predicted_T[i] = classifier.predict(test_X[i]);
+        }
+    }
+    /**
+	 * 評価テスト  混合行列(confutonMatrix)をもとに、モデルの評価
+     *
+	 * 正解率(accuracy) 全データの中で正しく分類できたデータの割合
+	 * (TruePositive+TrueNegative) / * (TruePositive+TrueNegative+FalsePositive+FalseNegative)
+     * 
+	 * 精度(precision) Positiveと予測したデータの中からPositiveと予測できたデータの割合
+	 * TruePositive / TruePositive + FalsePositive
+     *
+	 * 再現率(recall)
+	 * TruePositive / (TruePositife + falseNegative)
+     */
+    public void evaluate(){
+        int[][] confusionMatrix = new int[patterns][patterns];
+        double accuracy = 0.;						//正解率
+        double[] precision = new double[patterns];	//精　度
+        double[] recall = new double[patterns];		//再現率
+        //評価テスト
+        for (int i = 0; i < test_N; i++) {
+            int predicted_ = Arrays.asList(predicted_T[i]).indexOf(1);
+            int actual_ = Arrays.asList(test_T[i]).indexOf(1);
+            confusionMatrix[actual_][predicted_] += 1;
+        }
+        for (int i = 0; i < patterns; i++) {
+            double col_ = 0.;
+            double row_ = 0.;
+            for (int j = 0; j < patterns; j++) {
+                if (i == j) {
+                    accuracy += confusionMatrix[i][j];
+                    precision[i] += confusionMatrix[j][i];
+                    recall[i] += confusionMatrix[i][j];
+                }
+                col_ += confusionMatrix[j][i];
+                row_ += confusionMatrix[i][j];
+            }
+            precision[i] /= col_;
+            recall[i] /= row_;
+        }
+        accuracy /= test_N;
+        //出力
+        System.out.println("------------------------");
+        System.out.println("ドロップアウトモデルの評価");
+        System.out.println("------------------------");
+        System.out.printf("正解率: %.1f %%\n", accuracy * 100);
+        System.out.println("精　度");
+        for (int i = 0; i < patterns; i++) {
+            System.out.printf(" クラス %d: %.1f %%\n", i+1, precision[i] * 100);
+        }
+        System.out.println("再現率:");
+        for (int i = 0; i < patterns; i++) {
+            System.out.printf(" クラス %d: %.1f %%\n", i+1, recall[i] * 100);
+        }
+
+    }
+}
+
+class StackedDenoisingAutoencoders {
+    public int nLayers; 		//レイヤー数
+    public DenoisingAutoencoders[] daLayers;	
+    public HiddenLayer[] sigmoidLayers;	
+    public LogisticRegression logisticLayer;
+    public Random rng;			//ランダム関数
+
+	int nIn_each ;
+	double pNoise_Training ;
+	double pNoise_Test  ;
+
+	int patterns ;				//クラスの数
+
+
+	int nIn ; // 入力層のユニット数（ニューロン数）
+	int nOut ; 
+    int[] hiddenLayerSizes = {20, 20};
+	double corruptionLevel ;
+
+	int train_N ; 				// トレーニングデータ数
+	double[][] train_X ; 		// トレーニングデータ
+	int train_N_each ; 
+
+	int test_N ;  				// テストデータ数
+	double[][] test_X ; 		//テストデータ
+	Integer[][] test_T ; 		// テストデータのラベル
+	int test_N_each ;
+
+	int validation_N ; 			//検証データ数
+	double[][] validation_X ; 	//検証データ
+	int[][] validation_T ; 		//検証データのラベル
+	int validation_N_each  ;
+
+	Integer[][] predicted_T ; 	// 予測ラベル
+
+	int pretrainEpochs ;
+	double pretrainLearningRate ;
+	int finetuneEpochs ;
+	double finetuneLearningRate ;
+
+	int minibatchSize ;			//ミニバッチに含まれるデータ数
+	int train_minibatch_N ;		//ミニバッチに含まれるトレーニングデータ数
+	int validation_minibatch_N ;//ミニバッチに含まれる検証データ数
+
+    // 入力データであるトレーニングデータのミニバッチ
+	double[][][] train_X_minibatch ;
+    // 入力データである検証データのミニバッチ
+	double[][][] validation_X_minibatch ;
+    // 出力データである検証データラベルのみにバッチ
+	int[][][] validation_T_minibatch ;
+	// ミニバッチのインデックス
+	List<Integer> minibatchIndex ;
+    /**
+     *  コンストラクタ
+     */
+    public StackedDenoisingAutoencoders(){
+        rng = new Random(123); 	// ランダム関数
+        train_N_each = 200;        
+        validation_N_each = 200;   
+        test_N_each = 50;          
+        nIn_each = 20;             
+        patterns = 3; 			//　クラスの数
+        pNoise_Training = 0.2; 
+        pNoise_Test = 0.25;    
+        train_N = train_N_each * patterns;
+        validation_N = validation_N_each * patterns;
+        test_N = test_N_each * patterns;
+        nIn = nIn_each * patterns;
+        nOut = patterns;
+        /**
+         * モデルのパラメータとしては、隠れ層のユニット数に加え、
+         * デノイジング・オートエンコーダでは、入力データにどれくらいのノイズを加えるかについても遠投する必要がある。
+         * ここでは損傷率を0.3に設定。一般的に0.1から0.3にする事が多い。
+         */
+        corruptionLevel = 0.3;
+        train_X = new double[train_N][nIn];
+        validation_X = new double[validation_N][nIn];
+        validation_T = new int[validation_N][nOut];
+        test_X = new double[test_N][nIn];
+        test_T = new Integer[test_N][nOut];
+        predicted_T = new Integer[test_N][nOut];
+        pretrainEpochs = 1000;
+        pretrainLearningRate = 0.2;
+        finetuneEpochs = 1000;
+        finetuneLearningRate = 0.15;
+        minibatchSize = 50; //各ミニバッチに含まれるデータ数
+        train_minibatch_N = train_N / minibatchSize; //ミニバッチ数
+        validation_minibatch_N = validation_N / minibatchSize; //検証用ミニバッチ
+        // 入力データであるトレーニングデータのミニバッチ
+        train_X_minibatch = new double[train_minibatch_N][minibatchSize][nIn];
+        // 入力データである検証データのミニバッチ
+        validation_X_minibatch = new double[validation_minibatch_N][minibatchSize][nIn];
+        // 出力データである検証データラベルのみにバッチ
+        validation_T_minibatch = new int[validation_minibatch_N][minibatchSize][nOut];
+
+		// 各ミニバッチのデータが確率的勾配降下法(SGD)にランダムに適用されるよう
+        minibatchIndex = new ArrayList<>(); //ミニバッチのインデックス
+        for (int i = 0; i < train_N; i++) {
+        	minibatchIndex.add(i);
+        }
+		// トレーニングデータをシャッフル
+        Collections.shuffle(minibatchIndex, rng);
+    }
+    /**
+     * コンストラクタ
+     */
+    public StackedDenoisingAutoencoders(int nIn, int[] hiddenLayerSizes, int nOut, Random rng) {
+        if (rng == null) rng = new Random(1234);
+        this.nIn = nIn;
+        this.hiddenLayerSizes = hiddenLayerSizes;
+        this.nOut = nOut;
+        this.nLayers = hiddenLayerSizes.length;
+        this.sigmoidLayers = new HiddenLayer[nLayers];
+        this.daLayers = new DenoisingAutoencoders[nLayers];
+        this.rng = rng;
+        // 複数の隠れ層を構築
+        for (int i = 0; i < nLayers; i++) {
+            int nIn_;
+            if (i == 0) nIn_ = nIn;
+            else nIn_ = hiddenLayerSizes[i-1];
+            // シグモイド関数による隠れ層の構築
+            // 重みとバイアスはRestrictedBoltzmannMachineと共有
+            sigmoidLayers[i] = new HiddenLayer(nIn_, hiddenLayerSizes[i], null, null, rng, "sigmoid");
+            // デノイジング・オートエンコーダーの構築
+            daLayers[i] = new DenoisingAutoencoders(nIn_, hiddenLayerSizes[i], sigmoidLayers[i].W, sigmoidLayers[i].b, null, rng);
+        }
+        // 出力層としてロジスティック回帰層を構築
+        logisticLayer = new LogisticRegression(hiddenLayerSizes[nLayers-1], nOut);
+    }
+    /**
+     * プレトレーニングを行うメソッド
+     * 引数は順に（ミニバッチに分けられた）
+     * トレーニングデータ、ミニバッチのサイズ、ミニバッチ数、エポック数、学習率、損傷率
+     *
+     * プレトレーニングでもミニバッチごとに処理を行う。ただし、同時に各層ごとに処理をしなければならない。
+     * いったん、pretrainメソッドに全てのトレーニングデータを渡してから、
+     * そのメソッド内でミニバッチごとのデータの処理を行っている。
+     */
+    public void pretrain(double[][][] X, int minibatchSize, int minibatch_N, int epochs, double learningRate, double corruptionLevel) {
+    	//レイヤーワイズによるプレトレーニング
+        for (int layer = 0; layer < nLayers; layer++) {
+            for (int epoch = 0; epoch < epochs; epoch++) {
+                for (int batch = 0; batch < minibatch_N; batch++) {
+                    double[][] X_ = new double[minibatchSize][nIn];
+                    double[][] prevLayerX_;
+                    // 現在の層に対する入力データをセット
+                    if (layer == 0) {
+                        X_ = X[batch];
+                    } else {
+                        prevLayerX_ = X_;
+                        X_ = new double[minibatchSize][hiddenLayerSizes[layer-1]];
+
+                        for (int i = 0; i < minibatchSize; i++) {
+                            X_[i] = sigmoidLayers[layer-1].output(prevLayerX_[i]);
+                        }
+                    }
+                    //デノイジング・オートエンコーダ層の学習
+                    daLayers[layer].train(X_, minibatchSize, learningRate, corruptionLevel);
+                }
+            }
+        }
+    }
+    /**
+     * ファインチューニング
+     * 引数は順にトレーニングデータ、ラベルデータ、ミニバッチサイズ、学習率
+     * 出力層にロジスティック回帰を用いた多層ニューラルネットワークにおけるバックプロパゲーション
+     * アルゴリズムを適用。複数の隠れ層間でユニット値を逆伝播させるため、各層の入力を保持する変数を用いている。
+     */
+    public void finetune(double[][] X, int[][] T, int minibatchSize, double learningRate) {
+        List<double[][]> layerInputs = new ArrayList<>(nLayers + 1);
+        layerInputs.add(X);
+        //各層からの出力値を格納する変数
+        double[][] Z = new double[0][0];
+        //ロジスティック層の値を格納する変数
+        double[][] dY;
+        // 隠れ層間で順に伝播させる
+        for (int layer = 0; layer < nLayers; layer++) {
+        	//入力値を保持する配列
+            double[] x_;  // layer input
+            //ミニバッチと隠れ層のサイズを持つ二次元配列
+            double[][] Z_ = new double[minibatchSize][hiddenLayerSizes[layer]];
+            //各ミニバッチでのループ処理
+            for (int n = 0; n < minibatchSize; n++) {
+            	//入力層では、変数x_にX[0]の値（入力値）を代入
+                if (layer == 0) {
+                    x_ = X[n];
+                } else {
+                    x_ = Z[n];
+                }
+                //シグモイド層から順伝播し、出力値を格納
+                Z_[n] = sigmoidLayers[layer].forward(x_);
+            }
+            Z = Z_;
+            layerInputs.add(Z.clone());
+        }
+        //出力層で順伝播と逆伝播させる
+        //出力層にはロジスティック回帰を用いて学習
+        dY = logisticLayer.train(Z, T, minibatchSize, learningRate);
+        // 隠れ層の間で逆伝播させる
+        double[][] Wprev;
+        double[][] dZ = new double[0][0];
+        for (int layer = nLayers - 1; layer >= 0; layer--) {
+            if (layer == nLayers - 1) {
+                Wprev = logisticLayer.W;
+            } else {
+                Wprev = sigmoidLayers[layer+1].W;
+                dY = dZ.clone();
+            }
+            dZ = sigmoidLayers[layer].backward(layerInputs.get(layer), layerInputs.get(layer+1), dY, Wprev, minibatchSize, learningRate);
+        }
+    }
+    /**
+     * 予測メソッド
+     * 学習されたモデルを使って入力データを予測する
+     * ネットワークを通じて入力を活性化
+     * 
+     * 
+     * ディープビリーフネット、積層デノイジング・オートエンコーダはともに
+     * 学習（すなわち、プレトレーニングとファインチューニング）が終わると、
+     * 一つの多層ニューラルネットワークとして扱えるようになることを考えれ
+     * ば、大部分の処理が共通しているのは当然と言えば当然。
+     * 全体的に積層デノイジング・オートエンコーダの方が、ディープビリーフ
+     * ネットよりシンプルに実装できる。
+     * 得られる精度に関してはほぼ差はない。これは、積層デノイジング・オー
+     * トエンコーダの利点と言える。
+     */
+    public Integer[] predict(double[] x) {
+        double[] z = new double[0];
+        for (int layer = 0; layer < nLayers; layer++) {
+            double[] x_;
+            if (layer == 0) {
+                x_ = x;
+            } else {
+                x_ = z.clone();
+            }
+            // シグモイド関数レイヤー
+            z = sigmoidLayers[layer].forward(x_);
+        }
+        // ロジスティック回帰モデルレイヤー
+        return logisticLayer.predict(z);
+    }
+    /**
+     * データセットのセット
+     */
+    public void setDataSet(){
+        for (int pattern = 0; pattern < patterns; pattern++) {
+        	// トレーニングデータセット
+            for (int n = 0; n < train_N_each; n++) {
+                int n_ = pattern * train_N_each + n;
+                for (int i = 0; i < nIn; i++) {
+                    if ( (n_ >= train_N_each * pattern && n_ < train_N_each * (pattern + 1) ) &&
+                            (i >= nIn_each * pattern && i < nIn_each * (pattern + 1)) ) {
+                        train_X[n_][i] = RandomGenerator.binomial(1, 1 - pNoise_Training, rng) * rng.nextDouble() * .5 + .5;
+                    } else {
+                        train_X[n_][i] = RandomGenerator.binomial(1, pNoise_Training, rng) * rng.nextDouble() * .5 + .5;
+                    }
+                }
+            }
+            // 検証データセット
+            for (int n = 0; n < validation_N_each; n++) {
+                int n_ = pattern * validation_N_each + n;
+                for (int i = 0; i < nIn; i++) {
+                    if ( (n_ >= validation_N_each * pattern && n_ < validation_N_each * (pattern + 1) ) &&
+                            (i >= nIn_each * pattern && i < nIn_each * (pattern + 1)) ) {
+                        validation_X[n_][i] = (double) RandomGenerator.binomial(1, 1 - pNoise_Training, rng) * rng.nextDouble() * .5 + .5;
+                    } else {
+                        validation_X[n_][i] = (double) RandomGenerator.binomial(1, pNoise_Training, rng) * rng.nextDouble() * .5 + .5;
+                    }
+                }
+                for (int i = 0; i < nOut; i++) {
+                    if (i == pattern) {
+                        validation_T[n_][i] = 1;
+                    } else {
+                        validation_T[n_][i] = 0;
+                    }
+                }
+            }
+            // テストデータセット
+            for (int n = 0; n < test_N_each; n++) {
+                int n_ = pattern * test_N_each + n;
+                for (int i = 0; i < nIn; i++) {
+                    if ( (n_ >= test_N_each * pattern && n_ < test_N_each * (pattern + 1) ) &&
+                            (i >= nIn_each * pattern && i < nIn_each * (pattern + 1)) ) {
+                        test_X[n_][i] = (double) RandomGenerator.binomial(1, 1 - pNoise_Test, rng) * rng.nextDouble() * .5 + .5;
+                    } else {
+                        test_X[n_][i] = (double) RandomGenerator.binomial(1, pNoise_Test, rng) * rng.nextDouble() * .5 + .5;
+                    }
+                }
+                for (int i = 0; i < nOut; i++) {
+                    if (i == pattern) {
+                        test_T[n_][i] = 1;
+                    } else {
+                        test_T[n_][i] = 0;
+                    }
+                }
+            }
+        }
+        /**
+         * ミニバッチの生成
+		 * データセットの中から部分的にいくつかのデータを選び取って、 
+		 * それらのデータに対してだけ和を計算して勾配を求めパラメータを更新する。
+		 * これを確率的勾配降下法という。 
+		 * このとき1回の更新に用いられるデータセットの部分集合のことをミニバッチという。
+         */
+        for (int j = 0; j < minibatchSize; j++) {
+            for (int i = 0; i < train_minibatch_N; i++) {
+            	//トレーニングデータ
+                train_X_minibatch[i][j] = train_X[minibatchIndex.get(i * minibatchSize + j)];
+            }
+            for (int i = 0; i < validation_minibatch_N; i++) {
+            	// 検証データ
+                validation_X_minibatch[i][j] = validation_X[minibatchIndex.get(i * minibatchSize + j)];
+                validation_T_minibatch[i][j] = validation_T[minibatchIndex.get(i * minibatchSize + j)];
+            }
+        }
+    }
+    /**
+     *  積層デノイジング・オートエンコーダモデルのモデルの構築
+     */
+    public void buildStackedDenoisingAutoencodersModel(){
+    	// 積層デノイジング・オートエンコーダモデルの構築
+        System.out.print("積層デノイジング・オートエンコーダモデルを構築しています...");
+        StackedDenoisingAutoencoders classifier = new StackedDenoisingAutoencoders(nIn, hiddenLayerSizes, nOut, rng);
+        System.out.println("完了.");
+        // モデルのプレトレーニング
+        System.out.print("モデルのプレトレーニングを開始します...");
+        classifier.pretrain(train_X_minibatch, minibatchSize, train_minibatch_N, pretrainEpochs, pretrainLearningRate, corruptionLevel);
+        System.out.println("完了.");
+        // モデルのファインチューニング
+        System.out.print("モデルのファインチューニングを開始します...");
+        for (int epoch = 0; epoch < finetuneEpochs; epoch++) {
+            for (int batch = 0; batch < validation_minibatch_N; batch++) {
+            	/**
+            	 * プレトレーニングで使ったトレーニングデータを用いることはしない
+            	 * すべてのデータセットをプレトレーニングとファインチューニングに用いてしまうと、
+            	 * 過学習に陥りやすくなる。そのため、トレーニングデータセットとは別に
+            	 * バリデーション（検証用）データセットを用意し、これをファインチューニングに用いる。
+            	 */
+                classifier.finetune(validation_X_minibatch[batch], validation_T_minibatch[batch], minibatchSize, finetuneLearningRate);
+            }
+            //モデルが収束されるよう学習率は徐々に減少
+            finetuneLearningRate *= 0.98;
+        }
+        System.out.println("完了.");
+        // テスト
+        for (int i = 0; i < test_N; i++) {
+        	// テストデータの分類結果を配列に格納
+            predicted_T[i] = classifier.predict(test_X[i]);
+        }
+    }
+    /**
+	 * 評価テスト  混合行列(confutonMatrix)をもとに、モデルの評価
+     *
+	 * 正解率(accuracy) 全データの中で正しく分類できたデータの割合
+	 * (TruePositive+TrueNegative) / * (TruePositive+TrueNegative+FalsePositive+FalseNegative)
+     * 
+	 * 精度(precision) Positiveと予測したデータの中からPositiveと予測できたデータの割合
+	 * TruePositive / TruePositive + FalsePositive
+     *
+	 * 再現率(recall)
+	 * TruePositive / (TruePositife + falseNegative)
+     */
+    public void evaluate(){
+        int[][] confusionMatrix = new int[patterns][patterns];
+        double accuracy = 0.; 						// 正解率
+        double[] precision = new double[patterns]; 	// 精　度
+        double[] recall = new double[patterns]; 	// 再現率
+        // 評価テスト
+        for (int i = 0; i < test_N; i++) {
+            int predicted_ = Arrays.asList(predicted_T[i]).indexOf(1);
+            int actual_ = Arrays.asList(test_T[i]).indexOf(1);
+            confusionMatrix[actual_][predicted_] += 1;
+        }
+        for (int i = 0; i < patterns; i++) {
+            double col_ = 0.;
+            double row_ = 0.;
+            for (int j = 0; j < patterns; j++) {
+                if (i == j) {
+                    accuracy += confusionMatrix[i][j];
+                    precision[i] += confusionMatrix[j][i];
+                    recall[i] += confusionMatrix[i][j];
+                }
+                col_ += confusionMatrix[j][i];
+                row_ += confusionMatrix[i][j];
+            }
+            precision[i] /= col_;
+            recall[i] /= row_;
+        }
+        accuracy /= test_N;
+        // 出力
+        System.out.println("----------------------------------------------");
+        System.out.println("積層デノイジング・オートエンコーダモデルの評価");
+        System.out.println("----------------------------------------------");
+        System.out.printf("正解率: %.1f %%\n", accuracy * 100);
+        System.out.println("精　度:");
+        for (int i = 0; i < patterns; i++) {
+            System.out.printf(" クラス %d: %.1f %%\n", i+1, precision[i] * 100);
+        }
+        System.out.println("正解率:");
+        for (int i = 0; i < patterns; i++) {
+            System.out.printf(" クラス %d: %.1f %%\n", i+1, recall[i] * 100);
+        }
+
+    }
+}
+
+class DenoisingAutoencoders {
+    public int nVisible;
+    public int nHidden;
+    public double[][] W;
+    public double[] hbias;
+    public double[] vbias;
+    public Random rng;
+	int train_N_each ;           
+	int test_N_each ;            
+	int nVisible_each ;          
+	double pNoise_Training ;     
+	double pNoise_Test ;         
+	int patterns ;
+	int train_N ;
+	int test_N ;
+	double corruptionLevel ;
+	double[][] train_X ;
+	double[][] test_X ;
+	double[][] reconstructed_X ;
+	int epochs ;
+	double learningRate ;
+	int minibatchSize ;
+	int minibatch_N ;
+	double[][][] train_X_minibatch ;
+	List<Integer> minibatchIndex ;
+	/**
+	 * コンストラクタ
+	 */
+    public DenoisingAutoencoders(){
+        rng = new Random(1234);
+        train_N_each = 200;          
+        test_N_each = 2;             
+        nVisible_each = 4;           
+        pNoise_Training = 0.05;    
+        pNoise_Test = 0.25;         
+        patterns = 3;
+        train_N = train_N_each * patterns;
+        test_N = test_N_each * patterns;
+        nVisible = nVisible_each * patterns;
+        nHidden = 6;
+        /**
+         * モデルのパラメータとしては、隠れ層のユニット数に加え、
+         * デノイジング・オートエンコーダでは、入力データにどれくらいのノイズを加えるかについても遠投する必要がある。
+         * ここでは損傷率を0.3に設定。一般的に0.1から0.3にする事が多い。
+         */
+        corruptionLevel = 0.3;
+        train_X = new double[train_N][nVisible];
+        test_X = new double[test_N][nVisible];
+        reconstructed_X = new double[test_N][nVisible];
+        epochs = 1000;
+        learningRate = 0.2;
+        minibatchSize = 10;
+        minibatch_N = train_N / minibatchSize;
+
+        train_X_minibatch = new double[minibatch_N][minibatchSize][nVisible];
+        minibatchIndex = new ArrayList<>();
+
+        for (int i = 0; i < train_N; i++) {
+        	minibatchIndex.add(i);
+        }
+        Collections.shuffle(minibatchIndex, rng);
+    }
+    /**
+     * コンストラクタ
+     */
+    public DenoisingAutoencoders(int nVisible, int nHidden, double[][] W, double[] hbias, double[] vbias, Random rng) {
+        if (rng == null) rng = new Random(1234);  // seed random
+        if (W == null) {
+            W = new double[nHidden][nVisible];
+            double w_ = 1. / nVisible;
+            for (int j = 0; j < nHidden; j++) {
+                for (int i = 0; i < nVisible; i++) {
+                    W[j][i] = RandomGenerator.uniform(-w_, w_, rng);
+                }
+            }
+        }
+        if (hbias == null) {
+            hbias = new double[nHidden];
+            for (int j = 0; j < nHidden; j++) {
+                hbias[j] = 0.;
+            }
+        }
+        if (vbias == null) {
+            vbias = new double[nVisible];
+            for (int i = 0; i < nVisible; i++) {
+                vbias[i] = 0.;
+            }
+        }
+        this.nVisible = nVisible;
+        this.nHidden = nHidden;
+        this.W = W;
+        this.hbias = hbias;
+        this.vbias = vbias;
+        this.rng = rng;
+
+    }
+    /**
+     * 学習メソッド
+     */
+    public void train(double[][] X, int minibatchSize, double learningRate, double corruptionLevel) {
+        double[][] grad_W = new double[nHidden][nVisible];
+        double[] grad_hbias = new double[nHidden];
+        double[] grad_vbias = new double[nVisible];
+        // ミニバッチの学習
+        for (int n = 0; n < minibatchSize; n++) {
+            // 元の入力データにノイズを追加
+            double[] corruptedInput = getCorruptedInput(X[n], corruptionLevel);
+            // エンコード
+            double[] z = getHiddenValues(corruptedInput);
+            // デコード
+            double[] y = getReconstructedInput(z);
+            // 可視層のバイアスvbiasについて勾配を計算
+            double[] v_ = new double[nVisible];
+            for (int i = 0; i < nVisible; i++) {
+                v_[i] = X[n][i] - y[i];
+                grad_vbias[i] += v_[i];
+            }
+            // 隠れ層のバイアスhbiasについて勾配を計算
+            double[] h_ = new double[nHidden];
+            for (int j = 0; j < nHidden; j++) {
+                for (int i = 0; i < nVisible; i++) {
+                    h_[j] = W[j][i] * (X[n][i] - y[i]);
+                }
+                h_[j] *= z[j] * (1 - z[j]);
+                grad_hbias[j] += h_[j];
+            }
+            // 重みWの勾配を計算
+            for (int j = 0; j < nHidden; j++) {
+                for (int i = 0; i < nVisible; i++) {
+                    grad_W[j][i] += h_[j] * corruptedInput[i] + v_[i] * z[j];
+                }
+            }
+        }
+        // パラメータを更新
+        for (int j = 0; j < nHidden; j++) {
+            for (int i = 0; i < nVisible; i++) {
+                W[j][i] += learningRate * grad_W[j][i] / minibatchSize;
+            }
+            hbias[j] += learningRate * grad_hbias[j] / minibatchSize;
+        }
+        for (int i = 0; i < nVisible; i++) {
+            vbias[i] += learningRate * grad_vbias[i] / minibatchSize;
+        }
+    }
+    /**
+     * ノイズを加える処理
+     * データの該当する部分の値を強制的に0にする（マスクする）
+     */
+    public double[] getCorruptedInput(double[] x, double corruptionLevel) {
+        double[] corruptedInput = new double[x.length];
+        // ノイズを追加
+        for (int i = 0; i < x.length; i++) {
+            double rand_ = rng.nextDouble();
+            if (rand_ < corruptionLevel) {
+                corruptedInput[i] = 0.;
+            } else {
+                corruptedInput[i] = x[i];
+            }
+        }
+        return corruptedInput;
+    }
+    public double[] getHiddenValues(double[] x) {
+        double[] z = new double[nHidden];
+        for (int j = 0; j < nHidden; j++) {
+            for (int i = 0; i < nVisible; i++) {
+                z[j] += W[j][i] * x[i];
+            }
+            z[j] += hbias[j];
+            z[j] = ActivationFunction.sigmoid(z[j]);
+        }
+        return z;
+    }
+    public double[] getReconstructedInput(double[] z) {
+        double[] y = new double[nVisible];
+        for (int i = 0; i < nVisible; i++) {
+            for (int j = 0; j < nHidden; j++) {
+                y[i] += W[j][i] * z[j];
+            }
+            y[i] += vbias[i];
+            y[i] = ActivationFunction.sigmoid(y[i]);
+        }
+        return y;
+    }
+    /**
+     * 学習が終わったデノイジング・オートエンコーダでモデルをテスト(recontruct)するときは
+     * データを損傷させる必要はない。通常のニューラルネットワークと同様に、ネットワークの重みを元に、
+     * 与えられた入力を逆伝播するだけである。
+     */
+    public double[] reconstruct(double[] x) {
+        double[] z = getHiddenValues(x);
+        double[] y = getReconstructedInput(z);
+        return y;
+    }
+    /**
+     * データセットのセット
+     */
+    public void setDataSet(){
+        //
+        // Create training data and test data for demo.
+        //   Data without noise would be:
+        //     class 1 : [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+        //     class 2 : [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0]
+        //     class 3 : [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]
+        //   and to each data, we add some noise.
+        //   For example, one of the data in class 1 could be:
+        //     [1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1]
+        //
+        for (int pattern = 0; pattern < patterns; pattern++) {
+        	// トレーニングデータのセット
+            for (int n = 0; n < train_N_each; n++) {
+                int n_ = pattern * train_N_each + n;
+                for (int i = 0; i < nVisible; i++) {
+                    if ( (n_ >= train_N_each * pattern && n_ < train_N_each * (pattern + 1) ) &&
+                            (i >= nVisible_each * pattern && i < nVisible_each * (pattern + 1)) ) {
+                        train_X[n_][i] = RandomGenerator.binomial(1, 1 - pNoise_Training, rng);
+                    } else {
+                        train_X[n_][i] = RandomGenerator.binomial(1, pNoise_Training, rng);
+                    }
+                }
+            }
+            //テストデータのセット
+            for (int n = 0; n < test_N_each; n++) {
+                int n_ = pattern * test_N_each + n;
+                for (int i = 0; i < nVisible; i++) {
+                    if ( (n_ >= test_N_each * pattern && n_ < test_N_each * (pattern + 1) ) &&
+                            (i >= nVisible_each * pattern && i < nVisible_each * (pattern + 1)) ) {
+                        test_X[n_][i] = RandomGenerator.binomial(1, 1 - pNoise_Test, rng);
+                    } else {
+                        test_X[n_][i] = RandomGenerator.binomial(1, pNoise_Test, rng);
+                    }
+                }
+            }
+        }
+        // ミニバッチの生成
+        for (int i = 0; i < minibatch_N; i++) {
+            for (int j = 0; j < minibatchSize; j++) {
+                train_X_minibatch[i][j] = train_X[minibatchIndex.get(i * minibatchSize + j)];
+            }
+        }
+    }
+    /**
+     * デノイジング・オートエンコーダモデルの構築
+     */
+    public void buildDenoisingAutoencodersModel(){
+        // デノイジング・オートエンコーダの構築
+        DenoisingAutoencoders nn = new DenoisingAutoencoders(nVisible, nHidden, null, null, null, rng);
+        // 学習
+        for (int epoch = 0; epoch < epochs; epoch++) {
+            for (int batch = 0; batch < minibatch_N; batch++) {
+                nn.train(train_X_minibatch[batch], minibatchSize, learningRate, corruptionLevel);
+            }
+        }
+        // テスト
+        for (int i = 0; i < test_N; i++) {
+            reconstructed_X[i] = nn.reconstruct(test_X[i]);
+        }
+    }
+    /**
+     * 評価関数と出力
+     */
+    public void evaluate(){
+        // 評価テスト
+    	//
+    	// まだない
+    	//
+    	// 出力
+        System.out.println("------------------------------------------------");
+        System.out.println("デノイジング・オートエンコーダモデル再構築の評価");
+        System.out.println("------------------------------------------------");
+        for (int pattern = 0; pattern < patterns; pattern++) {
+            System.out.printf("クラス%d\n", pattern + 1);
+            for (int n = 0; n < test_N_each; n++) {
+                int n_ = pattern * test_N_each + n;
+                System.out.print( Arrays.toString(test_X[n_]) + " -> ");
+                System.out.print("[");
+                for (int i = 0; i < nVisible-1; i++) {
+                    System.out.printf("%.5f, ", reconstructed_X[n_][i]);
+                }
+                System.out.printf("%.5f]\n", reconstructed_X[n_][nVisible-1]);
+            }
+            System.out.println();
+        }
+    }
+}
+
+class DeepBeliefNets {
+    public int nIn;
+    int[] hiddenLayerSizes = {20, 20};
+    public int nOut;
+    public int nLayers;			//レイヤー数
+    public RestrictedBoltzmannMachines[] rbmLayers;
+    public HiddenLayer[] sigmoidLayers;
+    public LogisticRegression logisticLayer;
+    public Random rng;			//ランダム関数
+	int train_N_each ;        
+	int validation_N_each ;   
+	int test_N_each ;         
+	int nIn_each ;            
+	double pNoise_Training ;  
+	double pNoise_Test ;     
+	int patterns ;				//クラスの数
+
+	int train_N ;				//トレーニングデータ数
+	int validation_N ;			//検証データ数
+	int test_N ;				//テストデータ数
+	int k ; 
+
+	int[][] train_X ;			//トレーニングデータ
+	double[][] validation_X ; 	//検証データ
+	int[][] validation_T ;		//検証データラベル
+	double[][] test_X ; 		//テストデータ 
+	Integer[][] test_T ;		//テストラベル
+	Integer[][] predicted_T ;	//予測ラベル
+	int pretrainEpochs ;
+	double pretrainLearningRate ;
+	int finetuneEpochs ;
+	double finetuneLearningRate ;
+
+	int minibatchSize ;//ミニバッチに含まれるデータ数
+	int train_minibatch_N ;//ミニバッチに含まれるトレーニングデータ数
+	int validation_minibatch_N ;//ミニバッチに含まれる検証データ数
+
+    // 入力データであるトレーニングデータのミニバッチ
+	int[][][] train_X_minibatch ;
+    // 入力データである検証データのミニバッチ
+	double[][][] validation_X_minibatch ;
+    // 出力データである検証データラベルのみにバッチ
+	int[][][] validation_T_minibatch ;
+	// ミニバッチのインデックス
+	List<Integer> minibatchIndex ;
+	/**
+	 * コンストラクタ
+	 */
+    public DeepBeliefNets(){
+        rng = new Random(123); 	 //ランダム関数
+        train_N_each = 200;     
+        validation_N_each = 200;
+        test_N_each = 50;       
+        nIn_each = 20;          
+        pNoise_Training = 0.2;  
+        pNoise_Test = 0.25;     
+        patterns = 3;		//クラスの数
+        train_N = train_N_each * patterns;
+        validation_N = validation_N_each * patterns;
+        test_N = test_N_each * patterns;
+        nIn = nIn_each * patterns;
+        nOut = patterns;
+        k = 1;  
+        train_X = new int[train_N][nIn];
+        validation_X = new double[validation_N][nIn];  
+        validation_T = new int[validation_N][nOut];
+        test_X = new double[test_N][nIn];  
+        test_T = new Integer[test_N][nOut];
+        predicted_T = new Integer[test_N][nOut];
+
+        pretrainEpochs = 1000;
+        pretrainLearningRate = 0.2;
+        finetuneEpochs = 1000;
+        finetuneLearningRate = 0.15;
+
+        minibatchSize = 50;			//各ミニバッチに含まれるデータ数
+        train_minibatch_N = train_N / minibatchSize; // ミニバッチ数
+        validation_minibatch_N = validation_N / minibatchSize; //検証用ミニバッチ数
+        // 入力データであるトレーニングデータのミニバッチ
+        train_X_minibatch = new int[train_minibatch_N][minibatchSize][nIn];
+        // 入力データである検証データのミニバッチ
+        validation_X_minibatch = new double[validation_minibatch_N][minibatchSize][nIn];
+        // 出力データである検証データラベルのみにバッチ
+        validation_T_minibatch = new int[validation_minibatch_N][minibatchSize][nOut];
+		// 各ミニバッチのデータが確率的勾配降下法(SGD)にランダムに適用されるよう
+        minibatchIndex = new ArrayList<>();
+        for (int i = 0; i < train_N; i++) {
+        	minibatchIndex.add(i);	//ミニバッチのインデックス
+        }
+		// トレーニングデータをシャッフル
+        Collections.shuffle(minibatchIndex, rng);
+    }
+    public DeepBeliefNets(int nIn, int[] hiddenLayerSizes, int nOut, Random rng) {
+        if (rng == null) rng = new Random(1234);
+        this.nIn = nIn;
+        this.hiddenLayerSizes = hiddenLayerSizes;
+        this.nOut = nOut;
+        this.nLayers = hiddenLayerSizes.length;
+        this.sigmoidLayers = new HiddenLayer[nLayers];
+        this.rbmLayers = new RestrictedBoltzmannMachines[nLayers];
+        this.rng = rng;
+        // 複数の隠れ層を構築
+        for (int i = 0; i < nLayers; i++) {
+            int nIn_;
+            if (i == 0) nIn_ = nIn;
+            else nIn_ = hiddenLayerSizes[i-1];
+            // 活性化関数にはシグモイド関数を利用
+            sigmoidLayers[i] = new HiddenLayer(nIn_, hiddenLayerSizes[i], null, null, rng, "sigmoid");
+            // 制約つきボルツマンマシン層を構築
+            // 重み行列のバイアスベクトルはsigmoidLayersと共有
+            rbmLayers[i] = new RestrictedBoltzmannMachines(nIn_, hiddenLayerSizes[i], sigmoidLayers[i].W, sigmoidLayers[i].b, null, rng);
+        }
+        // 出力層としてロジスティック回帰層を構築
+        logisticLayer = new LogisticRegression(hiddenLayerSizes[nLayers-1], nOut);
+    }
+
+    /**
+     * プレトレーニングを行う
+     * 引数は順に（ミニバッチに分けられた）
+     * トレーニングデータ、ミニバッチのサイズ、ミニバッチ数、エポック数（学習回数）、学習率、サンプリング回数
+     * 
+     * プレトレーニングでもミニバッチごとに処理を行う。ただし、同時に各層ごとに処理をしなければならない。
+     * いったん、pretrainメソッドに全てのトレーニングデータを渡してから、
+     * そのメソッド内でミニバッチごとのデータの処理を行っている。
+     */
+    public void pretrain(int[][][] X, int minibatchSize, int minibatch_N, int epochs, double learningRate, int k) {
+    	// レイヤーワイズによるプレトレーニング
+        for (int layer = 0; layer < nLayers; layer++) {  
+            for (int epoch = 0; epoch < epochs; epoch++) {
+                for (int batch = 0; batch < minibatch_N; batch++) {
+                    int[][] X_ = new int[minibatchSize][nIn];
+                    int[][] prevLayerX_;
+                    // 現在の層に対する入力データをセット
+                    if (layer == 0) {
+                        X_ = X[batch];
+                    } else {
+                        prevLayerX_ = X_;
+                        X_ = new int[minibatchSize][hiddenLayerSizes[layer-1]];
+                        for (int i = 0; i < minibatchSize; i++) {
+                        	/**
+							 * ディープビリーフネット（制約つきボルツマンマシン）では、各層のユニットはバイナリ値を持つので、
+							 * double型の値を返すHidenLayerインスタンスのoutputメソッドは使えない。
+							 * そのため、int型の値を返すoutputuBinomialメソッドを追加
+							 */
+                            X_[i] = sigmoidLayers[layer-1].outputBinomial(prevLayerX_[i], rng);
+                        }
+                    }
+                    rbmLayers[layer].contrastiveDivergence(X_, minibatchSize, learningRate, k);
+                }
+            }
+        }
+
+    }
+    /**
+     * ファインチューニングを行う
+     * 引数は順にトレーニングデータ、ラベルデータ、ミニバッチサイズ、学習率
+     * 出力層にロジスティック回帰を用いた多層ニューラルネットワークにおけるバックプロパゲーション
+     * アルゴリズムを適用。複数の隠れ層間でユニット値を逆伝播させるため、各層の入力を保持する変数を用いている。
+     */
+    public void finetune(double[][] X, int[][] T, int minibatchSize, double learningRate) {
+        List<double[][]> layerInputs = new ArrayList<>(nLayers + 1);
+        layerInputs.add(X);
+        double[][] Z = new double[0][0];	// 各層からの出力値を格納する変数
+        double[][] dY;						// ロジスティック層の値を格納する変数
+        // 隠れ層間で順に伝播させる
+        for (int layer = 0; layer < nLayers; layer++) {
+        	// 入力値を保持する配列
+            double[] x_;
+            // ミニバッチと隠れ層のサイズを持つ2次元配列
+            double[][] Z_ = new double[minibatchSize][hiddenLayerSizes[layer]];
+            // 各ミニバッチでのループ処理
+            for (int n = 0; n < minibatchSize; n++) {
+            	// 入力層では、変数x_にX[0]の値（入力値）を代入
+                if (layer == 0) {
+                    x_ = X[n];
+                } else {
+                    x_ = Z[n];
+                }
+                // シグモイド層から順伝播し、出力値を格納
+                Z_[n] = sigmoidLayers[layer].forward(x_);
+            }
+            Z = Z_;
+            layerInputs.add(Z.clone());
+        }
+        // 出力層で順伝播と逆伝播させる
+        // 出力層にはロジスティック回帰を用いて学習
+        dY = logisticLayer.train(Z, T, minibatchSize, learningRate);
+        // 隠れ層の間で逆伝播させる
+        double[][] Wprev;
+        double[][] dZ = new double[0][0];
+        for (int layer = nLayers - 1; layer >= 0; layer--) {
+            if (layer == nLayers - 1) {
+                Wprev = logisticLayer.W;
+            } else {
+                Wprev = sigmoidLayers[layer+1].W;
+                dY = dZ.clone();
+            }
+            dZ = sigmoidLayers[layer].backward(layerInputs.get(layer), layerInputs.get(layer+1), dY, Wprev, minibatchSize, learningRate);
+        }
+    }
+    /**
+     *	クラスを予測するメソッド ネットワークを通じ入力を活性化
+     *  トレーニングが終わったディープビリーフネットは一つの（ディープ）
+     *  ニューラルネットワークであるため、どのデータがどのクラスに属する
+     *  ものなのか予測する際は、単純に各層においてデータを順伝播させれば
+     *  よい。
+     */
+    public Integer[] predict(double[] x) {
+        double[] z = new double[0];
+        for (int layer = 0; layer < nLayers; layer++) {
+            double[] x_;
+            if (layer == 0) {
+                x_ = x;
+            } else {
+                x_ = z.clone();
+            }
+            //シグモイド関数レイヤー
+            z = sigmoidLayers[layer].forward(x_);
+        }
+        //ロジスティック回帰モデルレイヤー
+        return logisticLayer.predict(z);
+    }
+    /**
+     * データセットのセット
+     */
+    public void setDataSet(){
+        for (int pattern = 0; pattern < patterns; pattern++) {
+        	//トレーニングデータのセット
+            for (int n = 0; n < train_N_each; n++) {
+                int n_ = pattern * train_N_each + n;
+                for (int i = 0; i < nIn; i++) {
+                    if ( (n_ >= train_N_each * pattern && n_ < train_N_each * (pattern + 1) ) &&
+                            (i >= nIn_each * pattern && i < nIn_each * (pattern + 1)) ) {
+                        train_X[n_][i] = RandomGenerator.binomial(1, 1 - pNoise_Training, rng);
+                    } else {
+                        train_X[n_][i] = RandomGenerator.binomial(1, pNoise_Training, rng);
+                    }
+                }
+            }
+            //検証データのセット
+            for (int n = 0; n < validation_N_each; n++) {
+                int n_ = pattern * validation_N_each + n;
+                for (int i = 0; i < nIn; i++) {
+                    if ( (n_ >= validation_N_each * pattern && n_ < validation_N_each * (pattern + 1) ) &&
+                            (i >= nIn_each * pattern && i < nIn_each * (pattern + 1)) ) {
+                        validation_X[n_][i] = (double) RandomGenerator.binomial(1, 1 - pNoise_Training, rng);
+                    } else {
+                        validation_X[n_][i] = (double) RandomGenerator.binomial(1, pNoise_Training, rng);
+                    }
+                }
+                for (int i = 0; i < nOut; i++) {
+                    if (i == pattern) {
+                        validation_T[n_][i] = 1;
+                    } else {
+                        validation_T[n_][i] = 0;
+                    }
+                }
+            }
+            //テストデータのセット
+            for (int n = 0; n < test_N_each; n++) {
+                int n_ = pattern * test_N_each + n;
+                for (int i = 0; i < nIn; i++) {
+                    if ( (n_ >= test_N_each * pattern && n_ < test_N_each * (pattern + 1) ) &&
+                            (i >= nIn_each * pattern && i < nIn_each * (pattern + 1)) ) {
+                        test_X[n_][i] = (double) RandomGenerator.binomial(1, 1 - pNoise_Test, rng);
+                    } else {
+                        test_X[n_][i] = (double) RandomGenerator.binomial(1, pNoise_Test, rng);
+                    }
+                }
+                for (int i = 0; i < nOut; i++) {
+                    if (i == pattern) {
+                        test_T[n_][i] = 1;
+                    } else {
+                        test_T[n_][i] = 0;
+                    }
+                }
+            }
+        }
+        // ミニバッチの作成
+        for (int j = 0; j < minibatchSize; j++) {
+            for (int i = 0; i < train_minibatch_N; i++) {
+                train_X_minibatch[i][j] = train_X[minibatchIndex.get(i * minibatchSize + j)];
+            }
+            for (int i = 0; i < validation_minibatch_N; i++) {
+                validation_X_minibatch[i][j] = validation_X[minibatchIndex.get(i * minibatchSize + j)];
+                validation_T_minibatch[i][j] = validation_T[minibatchIndex.get(i * minibatchSize + j)];
+            }
+        }
+
+    }
+    /**
+     * DeepBeliefNetsモデルの構築
+     */
+    public void buildDeepBeleifNetsModel(){
+    	// DeepBeliefNetsモデルの構築
+        System.out.print("モデルを構築しています...");
+        DeepBeliefNets classifier = new DeepBeliefNets(nIn, hiddenLayerSizes, nOut, rng);
+        System.out.println("完了.");
+        // モデルのプレトレーニング
+        System.out.print("モデルをプレトレーニングしています...");
+        classifier.pretrain(train_X_minibatch, minibatchSize, train_minibatch_N, pretrainEpochs, pretrainLearningRate, k);
+        System.out.println("完了.");
+        // モデルのファインチューニング
+        System.out.print("モデルをファインチューニングしています...");
+        for (int epoch = 0; epoch < finetuneEpochs; epoch++) {
+            for (int batch = 0; batch < validation_minibatch_N; batch++) {
+            	/**
+            	 * プレトレーニングで使ったトレーニングデータを用いることはしない
+            	 * すべてのデータセットをプレトレーニングとファインチューニングに用いてしまうと、
+            	 * 過学習に陥りやすくなる。そのため、トレーニングデータセットとは別に
+            	 * バリデーション（検証用）データセットを用意し、これをファインチューニングに用いる。
+            	 */
+                classifier.finetune(validation_X_minibatch[batch], validation_T_minibatch[batch], minibatchSize, finetuneLearningRate);
+            }
+            //モデルが収束されるよう学習率は徐々に減少
+            finetuneLearningRate *= 0.98;
+        }
+        System.out.println("完了.");
+        // テスト
+        for (int i = 0; i < test_N; i++) {
+        	//テストデータの分類結果を配列に格納
+            predicted_T[i] = classifier.predict(test_X[i]);
+        }
+    }
+    /**
+     * 評価関数
+     * 
+	 * 正解率(accuracy) 全データの中で正しく分類できたデータの割合
+	 * (TruePositive+TrueNegative) / * (TruePositive+TrueNegative+FalsePositive+FalseNegative)
+     * 
+	 * 精度(precision) Positiveと予測したデータの中からPositiveと予測できたデータの割合
+	 * TruePositive / TruePositive + FalsePositive
+     *
+	 * 再現率(recall)
+	 * TruePositive / (TruePositife + falseNegative)
+     */
+    public void evaluate(){
+        int[][] confusionMatrix = new int[patterns][patterns];
+        double accuracy = 0.;						//正解率
+        double[] precision = new double[patterns]; 	//精　度
+        double[] recall = new double[patterns];		//再現率
+        //評価テスト
+        for (int i = 0; i < test_N; i++) {
+            int predicted_ = Arrays.asList(predicted_T[i]).indexOf(1);
+            int actual_ = Arrays.asList(test_T[i]).indexOf(1);
+
+            confusionMatrix[actual_][predicted_] += 1;
+        }
+        for (int i = 0; i < patterns; i++) {
+            double col_ = 0.;
+            double row_ = 0.;
+            for (int j = 0; j < patterns; j++) {
+                if (i == j) {
+                    accuracy += confusionMatrix[i][j];
+                    precision[i] += confusionMatrix[j][i];
+                    recall[i] += confusionMatrix[i][j];
+                }
+                col_ += confusionMatrix[j][i];
+                row_ += confusionMatrix[i][j];
+            }
+            precision[i] /= col_;
+            recall[i] /= row_;
+        }
+        accuracy /= test_N;
+        //出力
+        System.out.println("----------------------------");
+        System.out.println("ディープビリーフネットの評価");
+        System.out.println("----------------------------");
+        System.out.printf("正解率: %.1f %%\n", accuracy * 100);
+        System.out.println("精　度:");
+        for (int i = 0; i < patterns; i++) {
+            System.out.printf(" クラス %d: %.1f %%\n", i+1, precision[i] * 100);
+        }
+        System.out.println("再現率:");
+        for (int i = 0; i < patterns; i++) {
+            System.out.printf(" クラス %d: %.1f %%\n", i+1, recall[i] * 100);
+        }
+
+    }
 }
 class RestrictedBoltzmannMachines {
     public int nVisible;
@@ -344,11 +2623,11 @@ class RestrictedBoltzmannMachines {
     public double[] hbias;
     public double[] vbias;
     public Random rng;
-	int train_N_each;         // for demo
-	int test_N_each ;            // for demo
-	int nVisible_each ;          // for demo
-	double pNoise_Training;  // for demo
-	double pNoise_Test;      // for demo
+	int train_N_each;         
+	int test_N_each ;            
+	int nVisible_each ;          
+	double pNoise_Training;  
+	double pNoise_Test;      
 	int patterns;
 	int train_N ;
 	int test_N ;
@@ -363,11 +2642,11 @@ class RestrictedBoltzmannMachines {
 	List<Integer> minibatchIndex ;
 	public RestrictedBoltzmannMachines(){
 		rng = new Random(123);
-		train_N_each = 200;         // for demo
-		test_N_each = 2;            // for demo
-		nVisible_each = 4;          // for demo
-		pNoise_Training = 0.05;  // for demo
-		pNoise_Test = 0.25;      // for demo
+		train_N_each = 200;         
+		test_N_each = 2;            
+		nVisible_each = 4;          
+		pNoise_Training = 0.05;  
+		pNoise_Test = 0.25;      
 		patterns = 3;
 		train_N = train_N_each * patterns;
 		test_N = test_N_each * patterns;
@@ -388,7 +2667,7 @@ class RestrictedBoltzmannMachines {
 		Collections.shuffle(minibatchIndex, rng);
 	}
     public RestrictedBoltzmannMachines(int nVisible, int nHidden, double[][] W, double[] hbias, double[] vbias, Random rng) {
-        if (rng == null) rng = new Random(1234);  // seed random
+        if (rng == null) rng = new Random(1234);  // ランダム
         if (W == null) {
         	// 隠れ層と可視層の数をサイズとする二次元配列
             W = new double[nHidden][nVisible];
@@ -474,7 +2753,6 @@ class RestrictedBoltzmannMachines {
             vbias[i] += learningRate * grad_vbias[i] / minibatchSize;
         }
     }
-
     /**
      * CD-kはサンプリングのための二つのメソッドsampleVgivenHとsampleHgivenVで成り立っている
      */
@@ -539,7 +2817,7 @@ class RestrictedBoltzmannMachines {
 
     /**
      * 学習済みの制約つきボルツマンマシンは重みが調整されたニューラルネットワークであるため、
-     * ネットワークを通じて単純に入力データ（素縄立ちの伊豆を含むデータ）を伝播させれば、
+     * ネットワークを通じて単純に入力データ（すなわちノイズを含むデータ）を伝播させれば、
      * ノイズが取り除かれたデータが生成される。
      */
     public double[] reconstruct(int[] v) {
@@ -572,6 +2850,7 @@ class RestrictedBoltzmannMachines {
         //   For example, one of the data in class 1 could be:
         //     [1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1]
         //
+    	//トレーニングデータセット
         for (int pattern = 0; pattern < patterns; pattern++) {
             for (int n = 0; n < train_N_each; n++) {
                 int n_ = pattern * train_N_each + n;
@@ -584,6 +2863,7 @@ class RestrictedBoltzmannMachines {
                     }
                 }
             }
+            //テストデータセット
             for (int n = 0; n < test_N_each; n++) {
                 int n_ = pattern * test_N_each + n;
                 for (int i = 0; i < nVisible; i++) {
@@ -604,7 +2884,7 @@ class RestrictedBoltzmannMachines {
         }
     }
     /**
-     * RestrictedBoltzmannMachinesModelの構築
+     * 制約つきボルツマンマシンの構築
      */
     public void buildBoltzmannMachinesModel(){
         // RBMインスタンス生成
@@ -615,7 +2895,7 @@ class RestrictedBoltzmannMachines {
     	// null 可視層のバイアス vbias
     	// rng  random
         RestrictedBoltzmannMachines nn = new RestrictedBoltzmannMachines(nVisible, nHidden, null, null, null, rng);
-        //ミニバッチごとに1階のサンプリングを行うコントラスティブダイバージェンスCD-1が適用
+        //ミニバッチごとに1回のサンプリングを行うコントラスティブダイバージェンスCD-1が適用
         for (int epoch = 0; epoch < epochs; epoch++) {
             for (int batch = 0; batch < minibatch_N; batch++) {
                 nn.contrastiveDivergence(train_X_minibatch[batch], minibatchSize, learningRate, 1);
@@ -628,13 +2908,22 @@ class RestrictedBoltzmannMachines {
         }
     }
     /**
-     * RBMモデルの再構築評価と出力
+     * 制約つきボルツマンマシンモデルの評価と出力
+     * 
+	 * 正解率(accuracy) 全データの中で正しく分類できたデータの割合
+	 * (TruePositive+TrueNegative) / * (TruePositive+TrueNegative+FalsePositive+FalseNegative)
+     * 
+	 * 精度(precision) Positiveと予測したデータの中からPositiveと予測できたデータの割合
+	 * TruePositive / TruePositive + FalsePositive
+     *
+	 * 再現率(recall)
+	 * TruePositive / (TruePositife + falseNegative)
      */
     public void evaluate(){
         // evaluation
-        System.out.println("---------------------");
-        System.out.println("RBMモデルの再構築評価");
-        System.out.println("---------------------");
+        System.out.println("------------------------------------------");
+        System.out.println("制約つきボルツマンマシンモデルの再構築評価");
+        System.out.println("------------------------------------------");
         for (int pattern = 0; pattern < patterns; pattern++) {
             System.out.printf("クラス%d\n", pattern + 1);
             for (int n = 0; n < test_N_each; n++) {
@@ -673,30 +2962,33 @@ class RestrictedBoltzmannMachines {
  * ニングデータに適合するよう更新されるバックプロパゲーションが鍵となる。
  */
 class MultiLayerPerceptrons {
-    private HiddenLayer hiddenLayer;
-    private LogisticRegression logisticLayer;
-    private Random rng ;
-    private int patterns;
+    private HiddenLayer hiddenLayer;			//隠れ層
+    private LogisticRegression logisticLayer; 	//出力層
+    private Random rng ;			//ランダム関数
+    private int patterns;			//クラスの数
     private int train_N;
     private int test_N;
     private int nIn;
     private int nHidden;
     private int nOut;
-    private double[][] train_X;
-    private int[][] train_T;
-    private double[][] test_X;
-    private Integer[][] test_T;
-    private Integer[][] predicted_T = new Integer[test_N][nOut];
+    private double[][] train_X;		//トレーニングデータ
+    private int[][] train_T;		//トレーニングデータラベル
+    private double[][] test_X;		//テストデータ
+    private Integer[][] test_T;		//テストデータラベル
+    private Integer[][] predicted_T = new Integer[test_N][nOut];//予測ラベル
     private int epochs;
-    private double learningRate;
-    private int minibatchSize;  //  here, we do on-line training
-    private int minibatch_N ;
-    private double[][][] train_X_minibatch ;
-    private int[][][] train_T_minibatch;
-    private List<Integer> minibatchIndex;
-    private double accuracy ;
-    private double[] precision;
-    private double[] recall;
+    private double learningRate; 	//学習率
+    private int minibatchSize;  	//  ミニバッチに含まれるデータ数
+    private int minibatch_N ; 		//ミニバッチの数
+    private double[][][] train_X_minibatch ; // トレーニングデータのミニバッチ
+    private int[][][] train_T_minibatch; // トレーニングデータラベルのミニバッチ
+    private List<Integer> minibatchIndex; //ミニバッチのインデックス
+    private double accuracy ; //正解率
+    private double[] precision; //精度
+    private double[] recall; //再現率
+    /**
+     * コンストラクタ
+     */
     public MultiLayerPerceptrons(int nIn, int nHidden, int nOut, Random rng) {
         this.nIn = nIn;
         this.nHidden = nHidden;
@@ -718,7 +3010,7 @@ class MultiLayerPerceptrons {
         predicted_T = new Integer[test_N][nOut];
         epochs = 5000;
         learningRate = 0.1;
-        minibatchSize = 1;  //  here, we do on-line training
+        minibatchSize = 1;  
         minibatch_N = train_N / minibatchSize;
         train_X_minibatch = new double[minibatch_N][minibatchSize][nIn];
         train_T_minibatch = new int[minibatch_N][minibatchSize][nOut];
@@ -730,7 +3022,7 @@ class MultiLayerPerceptrons {
         recall = new double[patterns];
     }
     /**
-     * 
+     * データセットのセット
      */
 	// Training simple XOR problem for demo
 	//   class 1 : [0, 0], [1, 1]  ->  Negative [0, 1]
@@ -773,22 +3065,53 @@ class MultiLayerPerceptrons {
      * マルチレイヤーパーセプトロンモデルの構築
      */
     public void buildMultiLayerPerceptronsModel(){
-        // construct
+        // マルチレイヤーパーセプトロンの生成
         MultiLayerPerceptrons classifier = new MultiLayerPerceptrons(nIn, nHidden, nOut, rng);
-        // train
+        // トレーニング
         for (int epoch = 0; epoch < epochs; epoch++) {
             for (int batch = 0; batch < minibatch_N; batch++) {
                 classifier.train(train_X_minibatch[batch], train_T_minibatch[batch], minibatchSize, learningRate);
             }
         }
-        // test
+        // テスト
         for (int i = 0; i < test_N; i++) {
             predicted_T[i] = classifier.predict(test_X[i]);
         }
     }
+    public Integer[] predict(double[] x) {
+        double[] z = hiddenLayer.output(x);
+        //ロジスティック回帰モデルレイヤー
+        return logisticLayer.predict(z);
+    }
+    public void train(double[][] X, int T[][], int minibatchSize, double learningRate) {
+        double[][] Z = new double[minibatchSize][nIn];  // 隠れ層の出力（出力層への入力）
+        double[][] dY;
+        // 隠れ層から順伝播
+        for (int n = 0; n < minibatchSize; n++) {
+            Z[n] = hiddenLayer.forward(X[n]);  // 入力ユニットを活性化
+        }
+        // 出力層から順伝播及び逆伝播
+        dY = logisticLayer.train(Z, T, minibatchSize, learningRate);
+        // 隠れ層から逆伝播
+        // ロジスティック回帰による予測誤差dYをバックプロパゲーションする。
+        // ロジスティック回帰の入力値はバックプロパゲーションにも必要
+        hiddenLayer.backward(X, Z, dY, logisticLayer.W, minibatchSize, learningRate);
+    }
+    /**
+     * 評価テスト
+     * 
+	 * 正解率(accuracy) 全データの中で正しく分類できたデータの割合
+	 * (TruePositive+TrueNegative) / * (TruePositive+TrueNegative+FalsePositive+FalseNegative)
+     * 
+	 * 精度(precision) Positiveと予測したデータの中からPositiveと予測できたデータの割合
+	 * TruePositive / TruePositive + FalsePositive
+     *
+	 * 再現率(recall)
+	 * TruePositive / (TruePositife + falseNegative)
+     */
     public void evaluate(){
         int[][] confusionMatrix = new int[patterns][patterns];
-
+        // 評価テスト
         for (int i = 0; i < test_N; i++) {
             int predicted_ = Arrays.asList(predicted_T[i]).indexOf(1);
             int actual_ = Arrays.asList(test_T[i]).indexOf(1);
@@ -825,24 +3148,6 @@ class MultiLayerPerceptrons {
         for (int i = 0; i < patterns; i++) {
             System.out.printf(" クラス %d: %.1f %%\n", i+1, recall[i] * 100);
         }
-    }
-    public void train(double[][] X, int T[][], int minibatchSize, double learningRate) {
-        double[][] Z = new double[minibatchSize][nIn];  // 隠れ層の出力（出力層への入力）
-        double[][] dY;
-        // 隠れ層から順伝播
-        for (int n = 0; n < minibatchSize; n++) {
-            Z[n] = hiddenLayer.forward(X[n]);  // 入力ユニットを活性化
-        }
-        // 出力層から順伝播及び逆伝播
-        dY = logisticLayer.train(Z, T, minibatchSize, learningRate);
-        // 隠れ層から逆伝播
-        // ロジスティック回帰による予測誤差dYをバックプロパゲーションする。
-        // ロジスティック回帰の入力値はバックプロパゲーションにも必要
-        hiddenLayer.backward(X, Z, dY, logisticLayer.W, minibatchSize, learningRate);
-    }
-    public Integer[] predict(double[] x) {
-        double[] z = hiddenLayer.output(x);
-        return logisticLayer.predict(z);
     }
 }
 
@@ -885,21 +3190,24 @@ class LogisticRegressionXOR {
 		nOut = patterns;
 		this.nIn = nIn;
 		this.nOut = nOut;
-		W = new double[nOut][nIn];//ネットワークの重み
-		b = new double[nOut]; //バイヤス
+		W = new double[nOut][nIn];	//ネットワークの重み
+		b = new double[nOut]; 		//バイヤス
 		predicted_T = new Integer[test_N][nOut];
 		epochs = 2000;
-		learningRate = 0.2;
-		minibatchSize = 1; // 各ミニバッチに含まれるデータ数
+		learningRate = 0.2;			//学習率
+		minibatchSize = 1; 			// 各ミニバッチに含まれるデータ数
+		// ミニバッチ数
 		minibatch_N = train_N / minibatchSize;
+        // 入力データであるトレーニングデータのミニバッチ
 		train_X_minibatch = new double[minibatch_N][minibatchSize][nIn];
+        // 入力データであるトレーニングデータラベルのミニバッチ
 		train_T_minibatch = new int[minibatch_N][minibatchSize][nOut];
 		// 各ミニバッチのデータが確率的勾配降下法(SGD)にランダムに適用されるよう
-		// トレーニングデータをシャッフル
 		minibatchIndex = new ArrayList<>();
 		for (int i = 0; i < train_N; i++){
 			minibatchIndex.add(i);
 		}
+		// トレーニングデータをシャッフル
 		Collections.shuffle(minibatchIndex, rng);
 	}
 	/**
@@ -994,34 +3302,38 @@ class LogisticRegressionXOR {
  * つである。
  * パーセプトロンでは、活性化関数にステップ関数を用いているが、 ロジスティッ
  * ク回帰では、シグモイド関数を用いている。
-	 * シグモイド関数は、任意の実数を０から１の値に写像する。
+ * シグモイド関数は、任意の実数を０から１の値に写像する。
  * つまりロジ スティック回帰の出力は、それぞれのクラスの事後確率と見なすこ
  * とができる。
  */
 class LogisticRegression {
-	double[][] W;
-	double[] b;
-	Random rng; // ランダム関数
-	int patterns; // クラスの数
-	int train_N;
-	int test_N;
+	double[][] W; 	//重み
+	double[] b; 	// バイアス
+	Random rng; 	// ランダム関数
+	int patterns; 	// クラスの数
+	int train_N;	// トレーニングデータ数
+	int test_N;		// テストデータ数
 	int nIn;
 	int nOut;
-	double[][] train_X;
-	int[][] train_T;
-	double[][] test_X;
-	Integer[][] test_T;
-	Integer[][] predicted_T;
+	double[][] train_X; //トレーニングデータ
+	int[][] train_T;	//トレーニングデータラベル
+	double[][] test_X;	//テストデータ
+	Integer[][] test_T; //テストデータラベル
+
+	Integer[][] predicted_T;//予測ラベル
 	int epochs;
-	double learningRate;
+	double learningRate; 	//学習率
+
 	int minibatchSize; // 各ミニバッチに含まれるデータ数
 	int minibatch_N; // ミニバッチ数
 	double[][][] train_X_minibatch; // 入力データであるトレーニングデータのミニバッチ
 	int[][][] train_T_minibatch; // 出力データであるトレーニングデータのミニバッチ
 	List<Integer> minibatchIndex; // SDGが適用されるミニバッチのインデックス（順番）
-	double accuracy;
-	double[] precision;
-	double[] recall;
+
+	double accuracy;	//正解率
+	double[] precision;	//精度
+	double[] recall;	//再現率
+
 	public LogisticRegression(int nIn, int nOut) {
 		rng = new Random(1234); // ランダム関数
 		this.nIn = nIn;
@@ -1128,6 +3440,15 @@ class LogisticRegression {
 	}
 	/**
 	 * 評価モデル
+	 * 
+	 * 正解率(accuracy) 全データの中で正しく分類できたデータの割合
+	 * (TruePositive+TrueNegative) / * (TruePositive+TrueNegative+FalsePositive+FalseNegative)
+     * 
+	 * 精度(precision) Positiveと予測したデータの中からPositiveと予測できたデータの割合
+	 * TruePositive / TruePositive + FalsePositive
+     *
+	 * 再現率(recall)
+	 * TruePositive / (TruePositife + falseNegative)
 	 */
 	public void evaluate() {
 		int[][] confusionMatrix = new int[patterns][patterns];
@@ -1206,11 +3527,14 @@ class LogisticRegression {
 			}
 			preActivation[j] += b[j]; // 線形活性化にも対応させている
 		}
-		// ソフトマックス関数は各クラスの確率を示す配列を返し、インデックスが予測クラスを表している
+		// ソフトマックス関数は各クラスの確率を示す配列を返し、インデック
+		// スが予測クラスを表している
 		return ActivationFunction.softmax(preActivation, nOut);
 	}
-	//予測メソッド
-	// 学習されたモデルを使って入力データを予測する
+	/**
+	 * 予測メソッド
+	 * 学習されたモデルを使って入力データを予測する
+	 */
 	public Integer[] predict(double[] x) {
 		double[] y = output(x); // 入力データを学習済みモデルによって活性化し出力層へ
 		Integer[] t = new Integer[nOut]; // 出力は確立で表されているためラベル（分類されたクラス）に変換
@@ -1311,7 +3635,7 @@ class Perceptrons {
 	public void buildModel() {
 		int epochs = 2000; // トレーニング数の上限
 		int epoch = 0; // training epochs
-		// 学習の反復解数は、あらかじめ設定された十分な学習解数にとうたつ
+		// 学習の反復解数は、あらかじめ設定された十分な学習回数に到達
 		// するまで、もしくはトレーニングデータを正しく分類するまで
 		// 継続されるようにする
 		while (true) { // 学習
@@ -1352,13 +3676,13 @@ class Perceptrons {
 	}
 	/**
 	 * 評価テスト  混合行列(confutonMatrix)をもとに、モデルの評価
-   *
+	 *
 	 * 正解率(accuracy) 全データの中で正しく分類できたデータの割合
 	 * (TruePositive+TrueNegative) / * (TruePositive+TrueNegative+FalsePositive+FalseNegative)
-   * 
+	 * 
 	 * 精度(precision) Positiveと予測したデータの中からPositiveと予測できたデータの割合
 	 * TruePositive / TruePositive + FalsePositive
-   *
+	 *
 	 * 再現率(recall)
 	 * TruePositive / (TruePositife + falseNegative)
 	 */
@@ -1368,7 +3692,7 @@ class Perceptrons {
 		double recall = 0.;
 		int[][] confusionMatrix = new int[2][2];
 		int[] predicted_T = new int[test_N]; // モデルの予想結果
-    // テスト
+		// テスト
 		for (int i = 0; i < test_N; i++) {
 			// テストデータの分類結果を配列に格納
 			predicted_T[i] = predict(test_X[i]);
@@ -1403,6 +3727,7 @@ class Perceptrons {
 		for (int i = 0; i < nIn; i++) {
 			preActivation += w[i] * x[i];
 		}
+		// ステップ関数
 		return ActivationFunction.step(preActivation);
 	}
 	/**
@@ -1508,8 +3833,8 @@ final class ActivationFunction {
 /**
  * バックプロパゲーション部分
  * 多層ニューラルネットワークでは、ニューラルネットワークを通じて、
- * フォワードプロパゲーション（順伝播）、バックプロパゲーション（逆伝播）が交互に行われることで
- * 学習が進む。
+ * フォワードプロパゲーション（順伝播）、バックプロパゲーション（逆伝播）
+ * が交互に行われることで学習が進む。
  */
 class HiddenLayer {
     public int nIn;
@@ -1520,11 +3845,12 @@ class HiddenLayer {
     public DoubleFunction<Double> activation;
     public DoubleFunction<Double> dactivation;
     public HiddenLayer(int nIn, int nOut, double[][] W, double[] b, Random rng, String activation) {
-        if (rng == null) rng = new Random(1234);  // 乱数シード
-        if (W == null) { // 重み W 
+        if (rng == null) {
+        	rng = new Random(1234);  	// 乱数シード
+        }
+        if (W == null) { 				// 重み W 
             W = new double[nOut][nIn];
             double w_ = 1. / nIn;
-
             for(int j = 0; j < nOut; j++) {
                 for(int i = 0; i < nIn; i++) {
                 	// 重みW は一様分布を用いて初期化
@@ -1560,12 +3886,18 @@ class HiddenLayer {
             for (int i = 0; i < nIn; i++) {
                 preActivation_ += W[j][i] * x[i];
             }
+            // 線形活性化にも対応させている
             preActivation_ += b[j];
+            // sigmoid / tanh / ReLU 
             y[j] = activation.apply(preActivation_);
         }
         return y;
     }
-
+    /**
+     * ディープビリーフネット（制約つきボルツマンマシン）では、各層のユニットはバイナリ値を持つので、
+     * double型の値を返すHidenLayerインスタンスのoutputメソッドは使えない。
+     * そのため、int型の値を返すoutputuBinomialメソッドを追加
+     */
     public int[] outputBinomial(int[] x, Random rng) {
         int[] y = new int[nOut];
         double[] xCast = new double[x.length];
