@@ -2,6 +2,7 @@
 public class DeepLearning {
 	public static void main(String[] args) {
 
+
 /**
  * 
  * １．第一章　ニューラルネットワーク
